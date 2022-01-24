@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  rails g pundit:install
+  include Pundit
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -13,10 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized(exception)
-    policy_name = exception.policy.class.to_s.underscore
- 
-    flash[:error] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
-    redirect_to(request.referrer || root_path)
+    redirect_to "/access_denied"
   end
 
 end

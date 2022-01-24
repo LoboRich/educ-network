@@ -6,7 +6,7 @@ class GroupPolicy < ApplicationPolicy
       @record = record
     end
 
-    def index?
+    def new?
       [
         'teacher'
       ].include?(user.role)
