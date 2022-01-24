@@ -1,0 +1,29 @@
+%h1 Listing groups
+= link_to destroy_user_session_path, class: "dropdown-item has-icon text-danger" do
+  %i.fas.fa-sign-out-alt
+  %span Logout
+%table
+  %thead
+    %tr
+      %th Img
+      %th User
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= group.img
+        %td= group.user_id
+        %td= group.name
+        %td= group.description
+        %td= link_to 'Show', group
+        %td= link_to 'Edit', edit_group_path(group)
+        %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Group', new_group_path
