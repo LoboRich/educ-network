@@ -2,19 +2,26 @@
   "name": "educ_network",
   "private": true,
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.4.0",
-    "autoprefixer": "^9",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "turbolinks": "^5.2.0"
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.0",
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.2.10",
+    "postcss-loader": "^4.0.3",
+    "tailwindcss": "^3.0.16",
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "sass": "^1.49.0",
-    "webpack-dev-server": "^4.7.3"
+    "sass": "^1.32.7",
+    "webpack-dev-server": "^3"
   }
 }
