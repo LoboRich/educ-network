@@ -3,7 +3,7 @@
   %thead
     %tr
       %th Img
-      %th User
+      %th Code
       %th Name
       %th Description
       %th
@@ -14,7 +14,7 @@
     - @groups.each do |group|
       %tr
         %td= group.img
-        %td= group.user_id
+        %td= group.code
         %td= group.name
         %td= group.description
         %td= link_to 'Show', group

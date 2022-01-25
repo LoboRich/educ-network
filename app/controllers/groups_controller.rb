@@ -26,6 +26,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        @group.update(code: rand(36**20).to_s(36))
         format.html { redirect_to profile_path, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
@@ -66,6 +67,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:img, :user_id, :name, :description)
+      params.require(:group).permit(:img, :user_id, :name, :description, :code)
     end
 end
