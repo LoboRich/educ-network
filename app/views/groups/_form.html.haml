@@ -10,8 +10,7 @@
     = f.label :img
     = f.text_field :img
   .field
-    = f.label :user_id
-    = f.text_field :user_id
+    = f.hidden_field :user_id, value: current_user.id
   .field
     = f.label :name
     = f.text_field :name

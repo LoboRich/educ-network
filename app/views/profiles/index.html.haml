@@ -1,0 +1,10 @@
+= link_to destroy_user_session_path, class: "dropdown-item has-icon text-danger" do
+    %i.fas.fa-sign-out-alt
+    %span Logout
+%h1 Profile
+= @info.fullname
+%br/
+= @info.email
+%br/
+
+= render 'groups/index'
