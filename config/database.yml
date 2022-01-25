@@ -10,7 +10,7 @@ default: &default
 development:
   <<: *default
   database: educ-network_postgresql
-  
+
 test:
   <<: *default
   database: educ-network_test
