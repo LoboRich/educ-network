@@ -12,8 +12,6 @@
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
 
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classes</a>
-              
-              <%= link_to "Sign out", new_user_registration_path, :class => "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
             <% end %>
           </div>
         </div>
@@ -54,7 +52,7 @@
 
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
 
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "block px-4 py-2 text-sm text-gray-700", :role => "menuitem", :tabindex => "-1" %>
               </div>
             </div>
           </div>
