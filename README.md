@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# educ-network
-=======
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -25,4 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
->>>>>>> e4a9e10221b4253c244ac2accc1de55eff14832e
