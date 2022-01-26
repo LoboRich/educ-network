@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    # authorize Group, :new?
+    authorize Group, :new?
     @group = Group.new
   end
 
@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         @group.update(code: rand(36**20).to_s(36))
+        UserMailer.with(user: current_user, group: @group).welcome_email.deliver_now
         format.html { redirect_to profile_path, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
