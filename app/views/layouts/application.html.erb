@@ -11,8 +11,9 @@
   </head>
 
   <body class="h-full">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="min-h-full">
+      <%= render "home/navbar" %>
+      <%= yield %>
+    </div>
   </body>
 </html>
