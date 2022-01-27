@@ -11,11 +11,15 @@
 
   </head>
 
-  <body>
+  <body class="w-screen h-screen" >
     <%= render 'layouts/header' %>
-    <%= render 'layouts/sidebar' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="flex w-full">
+      <%= render 'layouts/sidebar' %>
+      <div class="flex flex-col w-full">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
