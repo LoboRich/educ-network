@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :posts
+  resources :groups
+  resources :users
+  devise_for :users 
   devise_for :users
 
   devise_scope :user do
