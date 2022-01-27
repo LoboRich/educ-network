@@ -3,21 +3,21 @@
 %table
   %thead
     %tr
-      %th Class
-      %th User
+      %th Name
+      %th Email
       %th Status
-      %th
-      %th
-      %th
+      -# %th
+      -# %th
+      -# %th
 
   %tbody
     - @class_students.each do |class_student|
       %tr
-        %td= class_student.class_id
-        %td= class_student.user_id
+        %td= class_student.user.fullname
+        %td= class_student.user.email
         %td= class_student.status
-        %td= link_to 'Show', class_student
-        %td= link_to 'Edit', edit_class_student_path(class_student)
-        %td= link_to 'Destroy', class_student, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        -# %td= link_to 'Show', class_student
+        -# %td= link_to 'Edit', edit_class_student_path(class_student)
+        -# %td= link_to 'Destroy', class_student, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br

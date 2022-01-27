@@ -1,4 +1,5 @@
 class ClassStudentsController < ApplicationController
+  before_action :set_group
   before_action :set_class_student, only: %i[ show edit update destroy ]
 
   # GET /class_students or /class_students.json
@@ -21,11 +22,12 @@ class ClassStudentsController < ApplicationController
 
   # POST /class_students or /class_students.json
   def create
-    @class_student = ClassStudent.new(class_student_params)
-
+    @class_student = @group.class_students.build(class_student_params)
+		@group.class_students << @class_student
+    UserMailer.with(student: @class_student.user, group: @group).added_to_group.deliver_now
     respond_to do |format|
       if @class_student.save
-        format.html { redirect_to class_student_url(@class_student), notice: "Class student was successfully created." }
+        format.html { redirect_to @group, notice: "Class student was successfully added." }
         format.json { render :show, status: :created, location: @class_student }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -61,6 +63,10 @@ class ClassStudentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_class_student
       @class_student = ClassStudent.find(params[:id])
+    end
+
+    def set_group
+      @group = Group.find(params[:group_id])
     end
 
     # Only allow a list of trusted parameters through.

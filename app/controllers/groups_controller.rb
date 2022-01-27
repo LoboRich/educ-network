@@ -26,13 +26,10 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
-    @class_student = @group.class_students.build(category_params)
-		@group.class_students << @class_student
 
     respond_to do |format|
       if @group.save
         @group.update(code: rand(36**20).to_s(36))
-        UserMailer.with(user: current_user, group: @group).welcome_email.deliver_now
         format.html { redirect_to profile_path, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
@@ -62,16 +59,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
       format.json { head :no_content }
-    end
-  end
-
-  def add_student
-    params.permit!
-    begin
-      student = ClassStudent.create(group_id: @group, user_id: params[:user], status: 'pending')
-      UserMailer.with(student: student, group: @group).send_invitation.deliver_now
-    rescue StandardError => e
-      redirect_to group_url(@group), notice: "#{e.to_s}"
     end
   end
 
