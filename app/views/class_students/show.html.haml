@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Class:
+  = @class_student.class_id
+%p
+  %b User:
+  = @class_student.user_id
+%p
+  %b Status:
+  = @class_student.status
+
+= link_to 'Edit', edit_class_student_path(@class_student)
+\|
+= link_to 'Back', class_students_path
