@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
   get 'home/index'
-  devise_for :users
+  devise_for :users, path: 'users', controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
-  # devise_scope :user do
-  #   authenticated :user do
-  #     namespace :users do
-  #       , as: :authenticated_root
-  #     end
-  #   end
-
-  #   root to: 'devise/sessions#new'
-  # end
+  devise_scope :user do
+    authenticated :user do
+      namespace :users do
+        get 'dashboard/index', as: :authenticated_root
+      end
+    end
+  end
 
   root to: 'home#index'
 
