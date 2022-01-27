@@ -1,4 +1,3 @@
-<<<<<<< posts-scaffold
 const colors = require("tailwindcss/colors");
 
 module.exports = {
@@ -27,6 +26,10 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      'my-pink': '#D96098',
+      'my-white': '#FAEEE7',
+      'my-teal': '#24A19C',
+      'my-blue': '#325288'
     },
     spacing: {
       px: "1px",
@@ -1031,27 +1034,7 @@ module.exports = {
     wordBreak: ["responsive"],
     zIndex: ["responsive", "focus-within", "focus"],
   },
-  plugins: [],
-};
-=======
-module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {
-      colors: {
-        'my-pink': '#D96098',
-        'my-white': '#FAEEE7',
-        'my-teal': '#24A19C',
-        'my-blue': '#325288'
-      },
-    },
-  },
-  variants: {
-    extend: {},
-  },
   plugins: [
     require('@tailwindcss/forms'),
   ],
-}
->>>>>>> master
+};
