@@ -1,6 +1,5 @@
-= link_to destroy_user_session_path, class: "dropdown-item has-icon text-danger" do
-    %i.fas.fa-sign-out-alt
-    %span Logout
+
+= link_to "Log out", destroy_user_session_path, :method => :delete 
 %h1 Profile
 = @user.fullname
 %br/
