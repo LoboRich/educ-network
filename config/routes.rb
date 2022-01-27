@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  resources :posts
+  resources :groups
+
   devise_scope :user do
     authenticated :user do
       namespace :users do
