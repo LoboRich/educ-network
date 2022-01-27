@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html class="h-full bg-gray-50">
     <title>TailwindDemo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,10 +9,11 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   </head>
-
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  
+  <body class="h-full">
+    <div class="min-h-full">
+      <%= render "home/navbar" %>
+      <%= yield %>
+    </div>
   </body>
 </html>
