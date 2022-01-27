@@ -8,6 +8,9 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
+    @class_student = @group.class_students.build
+    @class_students = @group.class_students.where.not(id: nil)
+    @students = User.where(role: 'student').collect{ |u| [u.fullname, u.id]}
   end
 
   # GET /groups/new
@@ -23,6 +26,8 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
+    @class_student = @group.class_students.build(category_params)
+		@group.class_students << @class_student
 
     respond_to do |format|
       if @group.save
@@ -58,6 +63,23 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def add_student
+    params.permit!
+    begin
+      student = ClassStudent.create(group_id: @group, user_id: params[:user], status: 'pending')
+      UserMailer.with(student: student, group: @group).send_invitation.deliver_now
+    rescue StandardError => e
+      redirect_to group_url(@group), notice: "#{e.to_s}"
+    end
+  end
+
+  def send_invite
+    
+  end
+
+  def accept_invite
   end
 
   private

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_121408) do
   enable_extension "plpgsql"
 
   create_table "class_students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "class_id"
+    t.uuid "group_id"
     t.uuid "user_id"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
