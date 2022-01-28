@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  get 'home/index'
-  devise_for :users, path: 'users', controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
+  devise_for :users 
+  resources :groups do
+    resources :class_students
+  end
 
   resources :posts
-  resources :groups
+  get '/profile', to: 'profiles#index'
+  get 'home/index'
 
   devise_scope :user do
+    get "/sign_out" => "users/sessions#destroy" 
     authenticated :user do
       namespace :users do
         get 'dashboard/index', as: :authenticated_root
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'home#index'
-
+  root :to => "profiles#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

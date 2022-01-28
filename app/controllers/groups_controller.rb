@@ -8,6 +8,9 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
+    @class_student = @group.class_students.build
+    @class_students = @group.class_students.where.not(id: nil)
+    @students = User.where(role: 'student').collect{ |u| [u.fullname, u.id]}
   end
 
   # GET /groups/new
@@ -26,7 +29,8 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to group_url(@group), notice: "Group was successfully created." }
+        @group.update(code: rand(36**20).to_s(36))
+        format.html { redirect_to profile_path, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,6 +62,13 @@ class GroupsController < ApplicationController
     end
   end
 
+  def send_invite
+    
+  end
+
+  def accept_invite
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
@@ -66,6 +77,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:img, :user_id, :name, :description)
+      params.require(:group).permit(:img, :user_id, :name, :description, :code)
     end
 end
