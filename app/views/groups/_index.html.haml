@@ -1,10 +1,9 @@
 %h1 Listing groups
-
 %table
   %thead
     %tr
       %th Img
-      %th User
+      %th Code
       %th Name
       %th Description
       %th
@@ -15,7 +14,7 @@
     - @groups.each do |group|
       %tr
         %td= group.img
-        %td= group.user_id
+        %td= group.code
         %td= group.name
         %td= group.description
         %td= link_to 'Show', group
@@ -24,4 +23,4 @@
 
 %br
 
-= link_to 'Create new class', new_group_path
+= link_to 'New Group', new_group_path

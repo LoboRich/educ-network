@@ -5,6 +5,7 @@ class CreateGroups < ActiveRecord::Migration[6.0]
       t.uuid :user_id
       t.string :name
       t.text :description
+      t.string :code
 
       t.timestamps
     end
