@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Hi, #{@user.fullname}
+    %p
+      You have been added to the group "#{@group.name}",
+    %p To login to the site, just follow this link:
+    = link_to 'EducNet', "#{ENV['BASE_URL']}"
+      
+    %p Have a great day!

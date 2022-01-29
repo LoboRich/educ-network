@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Hi, #{@user.fullname}
+    %p
+      You have been invited to a group,
+      your entry code is: #{@group.code}.
+      %br/
+    %button.bg-blue-500.hover:bg-blue-700.text-white.font-bold.py-2.px-4.rounded-full
+      Accept Invitation
+    %p Have a great day!
