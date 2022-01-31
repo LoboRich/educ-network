@@ -5,25 +5,23 @@
     %tr
       %th Title
       %th Instructions
-      %th Class
       %th Question
       %th Classification
-      %th
-      %th
-      %th
+      -# %th
+      -# %th
+      -# %th
 
   %tbody
     - @activities.each do |activity|
       %tr
         %td= activity.title
         %td= activity.instructions
-        %td= activity.class_id
         %td= activity.question
         %td= activity.classification
-        %td= link_to 'Show', activity
-        %td= link_to 'Edit', edit_activity_path(activity)
-        %td= link_to 'Destroy', activity, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        -#%td= link_to 'Show', activity
+        -#%td= link_to 'Edit', edit_activity_path(activity)
+        -#%td= link_to 'Destroy', activity, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Activity', new_group_activity_path()
+= link_to 'New Activity', new_group_activity_path(@group)

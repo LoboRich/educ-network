@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show edit update destroy ]
-  before_action :set_group, only: %i[ index ]
+  before_action :set_group
 
   # GET /activities or /activities.json
   def index
@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/new
   def new
-    @activity = Activity.new
+    @activity = @group.activities.build
   end
 
   # GET /activities/1/edit
@@ -22,11 +22,12 @@ class ActivitiesController < ApplicationController
 
   # POST /activities or /activities.json
   def create
-    @activity = Activity.new(activity_params)
-
+    # @activity = @group.activities.build(activity_params)
+		# @group.activities << @activity
+    binding.pry
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to activity_url(@activity), notice: "Activity was successfully created." }
+        format.html { redirect_to group_activities_path(@group), notice: "Activity was successfully created." }
         format.json { render :show, status: :created, location: @activity }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -70,6 +71,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def activity_params
-      params.require(:activity).permit(:title, :instructions, :group_id, :question, :classification)
+      params.require(:activity).permit(:title, :instructions, :group_id, :question, :classification,{:questions => [], :choices => [], :correct_answers => []})
     end
 end

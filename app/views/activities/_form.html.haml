@@ -1,4 +1,4 @@
-= form_for @activity do |f|
+= form_for [@group, @activity] do |f|
   - if @activity.errors.any?
     #error_explanation
       %h2= "#{pluralize(@activity.errors.count, "error")} prohibited this activity from being saved:"
@@ -8,18 +8,51 @@
 
   .field
     = f.label :title
-    = f.text_field :title
+    = f.text_field :title, :required => "true"
   .field
     = f.label :instructions
-    = f.text_area :instructions
-  .field
-    = f.label :class_id
-    = f.text_field :class_id
-  .field
-    = f.label :question
-    = f.text_field :question
+    = f.text_area :instructions, :required => "true"
   .field
     = f.label :classification
-    = f.text_field :classification
+    = f.select :classification, options_for_select([['Quiz', 'quiz'], ['Exam', 'exam']]), {} ,{:required => "true"}
+  
+  %div
+    %a{onclick: "add_question()"} Add Question
+    #newlink
+  %br
+  %br
+  %br
   .actions
     = f.submit 'Save'
+  
+#newlinktpl{:style => "display:none"}
+
+:javascript
+  
+  var ct = 1;
+  function add_question()
+  {
+    ct++;
+    var next_id = document.getElementById('newlink').children.length;
+    // link to delete extended form elements
+    var delLink = '<td><a href="javascript:delIt('+ ct +')">Del</a></td>';
+    var div1 = document.createElement('tr');
+    div1.id = ct;
+    var parent = document.getElementById('newlinktpl');
+    // var input_child = '<td><input type="hidden" name="vehicle_ids[]" value="'+id+'"/>'+chassis_num+'</td>';
+    var added_child = '<td><label>Question</><input class="form-control" multiple="multiple" name="questions[]" type="text"></td><td><label>Choices</><input class="form-control" multiple="multiple" name="choices[]" type="text"></td><td><label>Correct Answer</><input class="form-control" multiple="multiple" name="correct_answers[]" type="text"></td>';
+    div1.innerHTML = document.getElementById('newlinktpl').innerHTML +added_child+delLink;
+    
+    document.getElementById('newlink').appendChild(div1);
+    
+  
+  }
+
+  // function to delete the newly added set of elements
+  function delIt(eleId)
+  {
+    d = document;
+    var ele = d.getElementById(eleId);
+    var parentEle = d.getElementById('newlink');
+    parentEle.removeChild(ele);
+  }
