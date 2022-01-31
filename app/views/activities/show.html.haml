@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @activity.title
+%p
+  %b Instructions:
+  = @activity.instructions
+%p
+  %b Class:
+  = @activity.class_id
+%p
+  %b Question:
+  = @activity.question
+%p
+  %b Classification:
+  = @activity.classification
+
+= link_to 'Edit', edit_activity_path(@activity)
+\|
+= link_to 'Back', activities_path

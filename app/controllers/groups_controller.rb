@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    authorize Group, :new?
     @group = Group.new
   end
 
