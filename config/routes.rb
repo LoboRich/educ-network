@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'classes/index'
   get 'activity/index'
   devise_for :users 
   resources :groups do
@@ -12,7 +13,8 @@ Rails.application.routes.draw do
     get "/sign_out" => "users/sessions#destroy" 
     authenticated :user do
       namespace :users do
-        get 'activity/index', as: :activity
+        get 'activities/index', as: :activities
+        get 'classes/index', as: :classes
       end
     end
   end
