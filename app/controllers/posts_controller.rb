@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /posts or /posts.json
   def index
     @posts = Post.all
@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @comments  = @post.comments.where.not(id: nil)
   end
 
   # GET /posts/new
