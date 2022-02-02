@@ -1,16 +1,54 @@
+<!-- Sidebar starts -->
+<!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
+<div style="min-height: 699px" class="w-64 absolute sm:relative bg-white shadow md:h-full flex-col hidden sm:flex">
+  <div class="pt-4 pb-2 px-6">
+    <a href="#!">
+      <div class="flex items-center">
+        <div class="shrink-0">
+          <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full w-12" alt="Avatar">
+        </div>
+        <div class="grow ml-3">
+          <p class="text-xl font-semibold text-blue-600"><%= current_user.first_name + " " + current_user.last_name %></p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <ul class="relative px-1">
+    <li class="relative" id="sidenavSecEx2">
+      <a class="flex items-center gap-2 text-xl py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out cursor-pointer" data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse" data-bs-target="#collapseSidenavSecEx2" aria-expanded="false" aria-controls="collapseSidenavSecEx2">
+        <i class="fas fa-users"></i>
+        <span>My Classes</span>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-3 h-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>
+        </svg>
+      </a>
+      <ul class="relative accordion-collapse collapse" id="collapseSidenavSecEx2" aria-labelledby="sidenavSecEx2" data-bs-parent="#sidenavSecExample">
+        <li class="relative">
+          <a href="#!" class="flex items-center text-lg py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Class 1</a>
+        </li>
+        <li class="relative">
+          <a href="#!" class="flex items-center text-lg py-4 pl-12 pr-6 h-6 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="primary">Class 2</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="text-center bottom-0 absolute w-full">
+    <hr class="m-0">
+    <p class="py-2 text-sm text-gray-700">teachbook.com</p>
+  </div>
+</div>
+<!-- Sidebar ends -->
 
-<div class="flex flex-no-wrap border-r shadow">
-    <!-- Sidebar starts -->
-    <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
+<!-- Sidebar starts
     <div style="min-height: 716px" class="w-64 absolute sm:relative bg-white shadow md:h-full flex-col justify-between hidden sm:flex">
         <div class="px-8">
-            <div class="h-16 w-full flex items-center user-tag flex items-center justify-start gap-4 border-b gray-100  w-full">
+            <div class="h-16 w-full flex items-center user-tag justify-start gap-4 border-b gray-100  w-full">
                 <i class="fas fa-user fa-2x"></i>
                 <h1 class="text-xl ">Username</h1>
             </div>
             <ul class="mt-12">
                 <li class="flex w-full justify-between text-gray-800 cursor-pointer items-center mb-6">
-                    <span class="text-lg ml-2">My Classes</span>
+                  <span class="text-lg ml-2">My Classes</span>
                 </li>
                 <li class="flex w-full justify-between text-gray-400 hover:text-gray-800 cursor-pointer items-center mb-6">
                     <span class="text-lg ml-2">My Assignments</span>
@@ -56,7 +94,6 @@
             </ul>
         </div>
     </div>
-    <!-- Sidebar ends -->
+    
 </div>
-
-
+Sidebar ends -->
