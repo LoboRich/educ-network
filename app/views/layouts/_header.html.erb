@@ -1,19 +1,28 @@
-<nav class="bg-gray-800">
+<nav class="bg-white border-b">
   <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <div class="flex items-center">
         <div class="flex-shrink-0">
-          <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+          <h1 class="text-3xl font-bold">Insert Logo Here</h1>
         </div>
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
             <% if user_signed_in? %>
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <%= link_to "Home", root_path, :class => "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to root_path, :class => "flex items-center justify-center gap-2 text-gray-700 hover:bg-my-pink hover:text-white px-3 py-2 rounded-md text-sm font-medium" do %>
+                <i class="fas fa-home fa-2x"></i>
+                <h1 class="font-bold">HOME</h1>
+              <% end %>
 
-              <%= link_to "Classes", users_classes_path, :class => "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to users_classes_path, :class => "flex items-center justify-center gap-2 text-gray-700 hover:bg-my-pink hover:text-white px-3 py-2 rounded-md text-sm font-medium" do %>
+                <i class="fas fa-graduation-cap fa-2x"></i>
+                <h1 class="font-bold">CLASSES</h1>
+              <% end %>
 
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Messages</a>
+              <%= link_to users_classes_path, :class => "flex items-center justify-center gap-2 text-gray-700 hover:bg-my-pink hover:text-white px-3 py-2 rounded-md text-sm font-medium" do %>
+                <i class="fas fa-comments fa-2x"></i>
+                <h1 class="font-bold">MESSAGES</h1>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -63,26 +72,3 @@
     </div>
   </div>
 </nav>
-<%# %div{ class: "header w-screen flex items-center border-gray-200 h-20 border-b shadow text-gray-700" }
-  %div{ class: "container bg-white py-2 md:py-4 w-screen" }
-    %div{ class: "px-4 mx-auto md:flex md:items-between justify-between w-screen"}
-      %div{ class: "flex gap-8 justify-center items-center"}
-        %div{ class: "flex justify-between items-center"}
-          %h1{ class: "logo-container font-bold text-3xl"}InsertLogoHere
-        - if user_signed_in?
-          %div{ class: "flex gap-4 items-between"}
-            %div{ class: "flex p-2 items-center justify-center lg:px-4 md:mx-2 gap-2 hover:text-white hover:bg-my-pink rounded transition-colors duration-250 w-36"}
-              %i{ class: "fas fa-home fa-2x"}
-              %button{ class: "font-bold"} HOME
-            %div{ class: "flex p-2 items-center justify-center lg:px-4 md:mx-2 gap-2 hover:text-white hover:bg-my-pink rounded transition-colors duration-250 w-36"}
-              %i{ class: "fas fa-graduation-cap fa-2x"}
-              %button{ class: "font-bold"} CLASSES
-            %div{ class: "flex p-2 items-center justify-center lg:px-4 md:mx-2 gap-2 hover:text-white hover:bg-my-pink rounded transition-colors duration-250 w-36"}
-              %i{class:"fas fa-comments fa-2x"}
-              %button{ class: "font-bold"} POSTS
-            = link_to destroy_user_session_path, method: :delete, :class => "flex p-2 items-center justify-center lg:px-4 md:mx-2 gap-2 font-bold hover:text-white hover:bg-my-pink rounded transition-colors duration-250 w-36" do
-              %i{class:"fas fa-pencil-alt fa-2x"}
-              ACTIVITY
-      - if user_signed_in?
-        = link_to "LOGOUT", destroy_user_session_path, method: :delete, :class => "flex items-center justify-center gap-2 font-bold px-4 py-2 hover:text-white hover:bg-my-pink rounded transition-colors duration-250 w-36"
- %>
