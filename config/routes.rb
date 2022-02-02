@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'activity/index'
   devise_for :users 
   resources :groups do
     resources :class_students
@@ -9,11 +10,11 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "/sign_out" => "users/sessions#destroy" 
-    # authenticated :user do
-    #   namespace :users do
-    #     get 'home/index', as: :authenticated_root
-    #   end
-    # end
+    authenticated :user do
+      namespace :users do
+        get 'activity/index', as: :activity
+      end
+    end
   end
 
   root :to => "home#index"
