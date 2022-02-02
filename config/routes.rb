@@ -5,19 +5,18 @@ Rails.application.routes.draw do
   end
 
   resources :posts
-  get '/profile', to: 'profiles#index'
-  get 'home/index'
+  get '/home', to: 'home#index'
 
   devise_scope :user do
     get "/sign_out" => "users/sessions#destroy" 
-    authenticated :user do
-      namespace :users do
-        get 'home/index', as: :authenticated_root
-      end
-    end
+    # authenticated :user do
+    #   namespace :users do
+    #     get 'home/index', as: :authenticated_root
+    #   end
+    # end
   end
 
-  root :to => "profiles#index"
+  root :to => "home#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'classpage', to: 'html_pages#classpage'
 end
