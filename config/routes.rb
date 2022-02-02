@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     resources :class_students
     resources :posts
     resources :comments
+    
+    resources :assignments do
+      resources :assignment_submissions 
+    end
+    
   end
 
   get '/profile', to: 'profiles#index'

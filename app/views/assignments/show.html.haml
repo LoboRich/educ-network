@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @assignment.title
+%p
+  %b Instructions:
+  = @assignment.instructions
+%p
+  %b Group:
+  = @assignment.group
+
+= link_to 'Edit', edit_group_assignment_path(@group, @assignment)
+\|
+= link_to 'Back', group_assignments_path(@group)

@@ -17,6 +17,11 @@
 \|
 = link_to 'Back', groups_path
 
+%h2 Assignments
+- for assignment in @group.assignments
+  %ul
+    %li= assignment.title
+|
 %br
 %h1 Add student
 = render 'class_students/index'
