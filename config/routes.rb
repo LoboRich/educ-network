@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users 
   resources :groups do
     resources :class_students
+    resources :assignments do
+      resources :assignment_submissions 
+    end
   end
 
   resources :posts
