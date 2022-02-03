@@ -13,10 +13,14 @@
   <body class="h-full">
     <div class="min-h-full">
       <%= render "layouts/header" %>
-      <div class="flex flex-no-wrap">
-        <%= render "layouts/sidebar" %>
+      <% if user_signed_in? %>
+        <div class="flex flex-no-wrap">
+          <%= render "layouts/sidebar" %>
+          <%= yield %>
+        </div>
+      <% else %>
         <%= yield %>
-      </div>
+      <% end %>
     </div>
   </body>
 </html>
