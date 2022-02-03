@@ -25,22 +25,22 @@
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  <% @activities.each do |article| %>
+                  <% @activities.each do |activity| %>
                     <tr>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">Quiz#1</div>
+                        <div class="text-sm text-gray-900"><%= activity.title %></div>
                         <div class="text-sm text-gray-500">Quiz</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">Do not read below the line</div>
+                        <div class="text-sm text-gray-900"><%= activity.instruction %></div>
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
+                      <td class="px-6 py-4 whitespace-nowrap">status
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Active
+                          <%= activity.status %>
                         </span>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>
+                        <%= link_to "View", activity, :class => "text-indigo-600 hover:text-indigo-900" %>
                       </td>
                     </tr>
                   <% end %>
