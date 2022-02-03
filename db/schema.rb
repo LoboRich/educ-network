@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2022_02_02_104544) do
   create_table "activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.string "instructions"
+    t.string "status"
+    t.datetime "due_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
