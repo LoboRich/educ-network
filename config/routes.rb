@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users 
   resources :groups do
     resources :class_students
-    resources :posts
-    resources :comments
+    resources :posts do 
+      resources :comments
+    end
   end
 
   get '/profile', to: 'profiles#index'
