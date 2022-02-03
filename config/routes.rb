@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get "/sign_out" => "users/sessions#destroy" 
     authenticated :user do
       namespace :users do
-        get 'activities/index', as: :activities
+        resources :activities
         get 'classes/index', as: :classes
       end
     end
