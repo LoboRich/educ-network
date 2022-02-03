@@ -65,12 +65,13 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    def set_group
+      @group = Group.find(params[:id])
+    end
+
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:content, :group_id, :user_id)
     end
 
-    def set_group
-      @group = Group.find(params[:id])
-    end
 end
