@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activities
   get 'classes/index'
   get 'activity/index'
 
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :posts
-  resources :activities
   get '/home', to: 'home#index'
 
   devise_scope :user do
