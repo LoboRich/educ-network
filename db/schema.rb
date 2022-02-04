@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_142347) do
 
   create_table "activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
+    t.string "kind", default: "Quiz"
     t.text "instructions"
     t.string "status", default: "Unassigned"
     t.datetime "due_date"

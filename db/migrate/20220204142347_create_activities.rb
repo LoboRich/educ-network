@@ -2,6 +2,7 @@ class CreateActivities < ActiveRecord::Migration[6.0]
   def change
     create_table :activities, id: :uuid do |t|
       t.string :title
+      t.string :kind, default: 'Quiz'
       t.text :instructions
       t.string :status, default: 'Unassigned'
       t.datetime :due_date
