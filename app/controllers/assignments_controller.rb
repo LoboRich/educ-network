@@ -1,8 +1,7 @@
 class AssignmentsController < ApplicationController
-  before_action :get_assignment
   before_action :set_assignment, only: %i[ show edit update destroy ]
-  
-  belongs_to :group
+  before_action :set_group 
+
 
   # GET /assignments or /assignments.json
   def index
@@ -61,7 +60,7 @@ class AssignmentsController < ApplicationController
 
   private
 
-    def get_group
+    def set_group
       @group = Group.find(params[:group_id])
     end
 
