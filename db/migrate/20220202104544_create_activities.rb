@@ -5,6 +5,7 @@ class CreateActivities < ActiveRecord::Migration[6.0]
       t.string :instructions
       t.string :status
       t.datetime :due_date
+      t.references :user, type: :uuid, null: false, foreign_key: true
 
       t.timestamps
     end
