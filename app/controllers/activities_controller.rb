@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  before_action :set_group, only: %i[ show new create ]
   before_action :set_activity, only: %i[ show edit update destroy ]
 
   # GET /activities or /activities.json
@@ -12,7 +13,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/new
   def new
-    @activity = Activity.new
+    @activity = @group.activities.build
   end
 
   # GET /activities/1/edit
@@ -21,11 +22,11 @@ class ActivitiesController < ApplicationController
 
   # POST /activities or /activities.json
   def create
-    @activity = Activity.new(activity_params)
+    @activity = @group.activities.build(activity_params)
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to activity_url(@activity), notice: "Activity was successfully created." }
+        format.html { redirect_to group_path(@group), notice: "#{@activity.title} was successfully created." }
         format.json { render :show, status: :created, location: @activity }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,9 +59,14 @@ class ActivitiesController < ApplicationController
   end
 
   private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
-      @activity = Activity.find(params[:id])
+      @activity = @group.activities.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
