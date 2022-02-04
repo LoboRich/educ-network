@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: %i[ show edit update destroy ]
   before_action :set_group 
+  before_action :set_assignment, only: %i[ show edit update destroy ]
 
 
   # GET /assignments or /assignments.json
