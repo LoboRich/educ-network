@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :activities
   get 'classes/index'
   get 'activity/index'
 
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
     resources :assignments do
       resources :assignment_submissions 
     end
+    resources :activities
   end
 
   resources :posts
