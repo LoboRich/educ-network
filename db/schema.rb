@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_104544) do
     t.string "instructions"
     t.string "status"
     t.datetime "due_date"
+    t.json "questions", default: "[]"
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
