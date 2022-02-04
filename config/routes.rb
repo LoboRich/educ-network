@@ -13,13 +13,13 @@ Rails.application.routes.draw do
   end
 
   resources :posts
+  resources :activities
   get '/home', to: 'home#index'
 
   devise_scope :user do
     get "/sign_out" => "users/sessions#destroy" 
     authenticated :user do
       namespace :users do
-        resources :activities
         get 'classes/index', as: :classes
       end
     end
