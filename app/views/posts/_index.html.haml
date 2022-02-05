@@ -19,7 +19,8 @@
         -# %td= link_to 'Show', post
         -# %td= link_to 'Edit', edit_post_path(post)
         -# %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+        - if @group.present?
+          %td= link_to 'Show', "/groups/#{@group.id}/posts/#{post.id}"
 %br
 
 -# = link_to 'New Post', new_post_path

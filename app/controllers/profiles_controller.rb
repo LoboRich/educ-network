@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
     def index
       @user = current_user
       @groups = @user.groups
-      @posts = @user.posts
+      @posts = current_user.posts
     end
   
   end
