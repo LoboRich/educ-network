@@ -1,0 +1,16 @@
+= form_with(model: [@group, @assignment], local: true) do |form|
+  - if @assignment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@assignment.errors.count, "error")} prohibited this assignment from being saved:"
+      %ul
+        - @assignment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = form.label :title
+    = form.text_field :title
+  .field
+    = form.label :instructions
+    = form.text_field :instructions
+  .actions
+    = form.submit 'Save'

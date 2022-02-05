@@ -1,0 +1,27 @@
+%h1{class: "text-5xl font-bold text-black"}Listing assignment_submissions
+
+%table
+  %thead
+    %tr
+      %th Assignment
+      %th User
+      %th Body
+      %th Grade
+      %th
+      %th
+      %th
+
+  %tbody
+    - @assignment_submissions.each do |assignment_submission|
+      %tr
+        %td= assignment_submission.assignment
+        %td= assignment_submission.user
+        %td= assignment_submission.body
+        %td= assignment_submission.grade
+        %td= link_to 'Show', assignment_submission
+        %td= link_to 'Edit', edit_assignment_submission_path(assignment_submission)
+        %td= link_to 'Destroy', assignment_submission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Assignment submission', new_assignment_submission_path
