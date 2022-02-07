@@ -12,4 +12,5 @@
 
 = link_to 'Edit', "/groups/#{@group.id}/posts/#{@post.id}/edit"
 = link_to 'Destroy', "/groups/#{@group.id}/posts/#{@post.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+= render 'comments/form'
 

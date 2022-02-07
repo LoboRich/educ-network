@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @comments  = @post.comments.where.not(id: nil)
+    @comment = @post.comments.build
   end
 
   # GET /posts/new
@@ -69,6 +70,10 @@ class PostsController < ApplicationController
 
     def set_group
       @group = Group.find(params[:group_id])
+    end
+
+    def set_comment
+      @comment = Comment.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
