@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :groups
   has_many :class_students
+  has_many :posts
   
   def fullname
     "#{self.first_name} #{self.middle_name} #{self.last_name}"

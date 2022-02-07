@@ -56,7 +56,13 @@
           %span{class: "text-lg"}Create  Assignment   
               
 
-  %h1 Add student
-  = render 'class_students/index'
-  = render 'class_students/form'
-  = link_to 'Back to Classes', groups_path, class: "m-8"
+%br
+%h1 Add student
+= render 'class_students/index'
+= render 'class_students/form'
+= render 'posts/index'
+= render 'posts/form'
+%h1 Add student
+= render 'class_students/index'
+= render 'class_students/form'
+= link_to 'Back to Classes', group_path(@group), class: "m-8"

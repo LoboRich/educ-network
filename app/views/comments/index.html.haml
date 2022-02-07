@@ -16,10 +16,10 @@
         %td= comment.content
         %td= comment.post_id
         %td= comment.user_id
-        %td= link_to 'Show', comment
-        %td= link_to 'Edit', edit_comment_path(comment)
+        -# %td= link_to 'Show', comment
+        -# %td= link_to 'Edit', edit_comment_path(comment)
         %td= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Comment', new_comment_path
+= link_to 'New Comment', group_post_comments_path([@group , @post])
