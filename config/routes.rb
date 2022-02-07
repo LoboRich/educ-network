@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  resources :comments
   devise_for :users 
   resources :groups do
     resources :class_students
+    resources :posts do 
+      resources :comments
+    end
     resources :assignments do
       resources :assignment_submissions 
     end
   end
 
-  resources :posts
   get '/profile', to: 'profiles#index'
   get 'home/index'
 

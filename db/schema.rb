@@ -37,16 +37,6 @@ ActiveRecord::Schema.define(version: 2022_02_02_064801) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "title"
-    t.text "instructions"
-    t.uuid "group_id"
-    t.jsonb "question"
-    t.string "classification"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "assignment_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "assignment_id", null: false
     t.uuid "user_id", null: false

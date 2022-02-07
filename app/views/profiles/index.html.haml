@@ -1,0 +1,12 @@
+
+= link_to "Log out", '/sign_out'
+%h1 Profile
+= @user.fullname
+%br/
+= @user.email
+%br/
+= @user.role
+%br/
+
+= render 'groups/index'
+= render 'posts/index'
