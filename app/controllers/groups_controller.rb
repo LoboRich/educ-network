@@ -18,11 +18,13 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
+    authorize Group, :new?
     @group = Group.new
   end
 
   # GET /groups/1/edit
   def edit
+    authorize Group, :edit?
   end
 
   # POST /groups or /groups.json
@@ -56,6 +58,7 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/1 or /groups/1.json
   def destroy
+    authorize Group, :destroy?
     @group.destroy
 
     respond_to do |format|
