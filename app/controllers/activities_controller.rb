@@ -14,6 +14,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = @group.activities.build
+    5.times { @activity.questions.build }
   end
 
   # GET /activities/1/edit
@@ -71,6 +72,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def activity_params
-      params.require(:activity).permit(:title, :instructions)
+      params.require(:activity).permit(:title, :instructions, questions_attributes: [:id, :query_question, :correct_answer])
     end
 end
