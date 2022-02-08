@@ -12,5 +12,19 @@
   .field
     = f.label :instructions
     = f.text_area :instructions
+
+  Questions:
+  .field
+    = f.fields_for :questions do |questions_form|
+      .field
+        = questions_form.label :query_question
+        = questions_form.text_field :query_question
+
+        = questions_form.label :correct_answer
+        = questions_form.radio_button :correct_answer, "true"
+        = questions_form.label :correct_answer_true, "True"
+        = questions_form.radio_button :correct_answer, "false"
+        = questions_form.label :correct_answer_false, "False"
+
   .actions
     = f.submit 'Save'
