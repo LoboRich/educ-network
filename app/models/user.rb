@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_many :groups
   has_many :class_students
   has_many :posts
-  
+  enum roles: { admin: "admin", teacher: "teacher", student: "student", guardian: "guardian"}
+
   def fullname
     "#{self.first_name} #{self.middle_name} #{self.last_name}"
   end
