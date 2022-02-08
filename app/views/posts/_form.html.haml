@@ -1,4 +1,4 @@
-= form_for @post do |f|
+= form_for ([@group , @post]) do |f|
   - if @post.errors.any?
     #error_explanation
       %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
@@ -10,10 +10,6 @@
     = f.label :content
     = f.text_field :content
   .field
-    = f.label :group_id
-    = f.text_field :group_id
-  .field
-    = f.label :user_id
-    = f.text_field :user_id
+    = f.hidden_field :user_id, value: current_user.id
   .actions
     = f.submit 'Save'

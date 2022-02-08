@@ -1,28 +1,68 @@
-%p#notice= notice
-%h1= @group.name
-%p
-  %b Img:
-  = @group.img
-%p
-  %b User:
-  = @group.user_id
-%p
-  %b Name:
-  = @group.name
-%p
-  %b Description:
-  = @group.description
+%div{class: "container flex flex-col mx-auto px-6 py-8 flex flex-col w-full items-center"}
+  -# Container for class banner. Change image_tag code to a link to the image file of each class
+  %div{class: "container-banner flex w-full h-40 bg-cover"}
+    -# = @group.img
+    = image_tag "MathClassBanner.png", :class => 'rounded flex-shrink-0 min-w-full min-h-full shadow'
+  -# Class Details
+  %p#notice= notice
+  %div{class:"flex items-between justify-center gap-2 w-full my-8"}
+    %div{class: "flex flex-col gap-2 w-full text-3xl"}
+      %span{class: "text-3xl font-bold"}= @group.name
+      %div{class: "flex flex-col md:flex-row text-xl gap-3"}
+        %span Teacher :
+        %span= @teacher.fullname
+      %span{class: "text-base"}= @group.description
+    %div{class: "flex justify-center gap-2"}
+      = link_to edit_group_path(@group), :class => "text-white flex self-center px-12 w-40 py-2 rounded bg-my-blue hover:bg-my-blue hover:opacity-80 flex items-center justify-center transition duration-250" do 
+        %div{}
+          %span{class: "text-white text-xl"} Edit 
+      = link_to @group, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "text-white flex gap-2 self-center px-12 w-40 py-2 rounded bg-red-400 hover:bg-my-blue hover:opacity-80 flex items-center justify-center transition duration-250" do 
+        %div{}
+          %span{class: "text-white text-xl"} Delete 
 
-= link_to 'Edit', edit_group_path(@group)
-\|
-= link_to 'Back', groups_path
+  -# Assignment Table
+  .-my-2.py-2.overflow-x-auto{:class => "sm:-mx-6.sm:px-6.lg:-mx-8.lg:px-8 w-full"}
+    .align-middle.inline-block.min-w-full.shadow.overflow-hidden{:class => "sm:rounded-lg.border-b.border-gray-200 w-full"}
+      %table.min-w-full
+        %thead
+          %tr
+            %th.px-6.py-3.border-b.border-gray-200.bg-gray-50.text-left.text-xs.leading-4.font-medium.text-gray-500.uppercase.tracking-wider
+              Assignment Title
+            %th.px-6.py-3.border-b.border-gray-200.bg-gray-50.text-left.text-xs.leading-4.font-medium.text-gray-500.uppercase.tracking-wider
+              Status
+            %th.px-6.py-3.border-b.border-gray-200.bg-gray-50.text-left.text-xs.leading-4.font-medium.text-gray-500.uppercase.tracking-wider
+              No. of Submissions
+            %th.px-6.py-3.border-b.border-gray-200.bg-gray-50.text-left.text-xs.leading-4.font-medium.text-gray-500.uppercase.tracking-wider
+              Action
+        %tbody{class: "bg-white"}
+          - for assignment in @group.assignments
+            %tr
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200
+                .flex.items-center
+                  .ml-4
+                    .text-sm.leading-5.font-medium.text-gray-900
+                      =assignment.title
+                    .text-sm.leading-5.text-gray-500 
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200
+                %span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-green-100.text-green-800 Ongoing
+              -# Insert Number of Submissions Code
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+                10
+              -# Insert View Assignment Code
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+                =link_to "View", group_assignment_path(@group, assignment) 
+      = link_to new_group_assignment_path(@group), :class => "text-center self-start hover:bg-transparent" do 
+        %div{class: "Create-new-assignment bg-gray-500 shadow rounded px-2 py-1 text-white hover:bg-my-blue transition-colors duration-250"}
+          %span{class: "text-lg"}Create  Assignment   
+              
 
-%h2 Assignments
-- for assignment in @group.assignments
-  %ul
-    %li= assignment.title
-|
 %br
 %h1 Add student
 = render 'class_students/index'
 = render 'class_students/form'
+= render 'posts/index'
+= render 'posts/form'
+%h1 Add student
+= render 'class_students/index'
+= render 'class_students/form'
+= link_to 'Back to Classes', group_path(@group), class: "m-8"
