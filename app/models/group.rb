@@ -4,4 +4,5 @@ class Group < ApplicationRecord
     has_many :class_students
     has_many :posts
     has_many :assignments
+    has_many :activities
 end
