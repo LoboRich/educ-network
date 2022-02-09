@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :questions
+  resources :activity_submissions
   get 'classes/index'
   get 'activity/index'
 
