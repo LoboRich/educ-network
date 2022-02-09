@@ -4,6 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
       t.string :kind, default: 'True or False'
       t.string :query_question
       t.boolean :correct_answer
+      t.integer :grading
       t.references :activity, type: :uuid, null: false, foreign_key: true
 
       t.timestamps

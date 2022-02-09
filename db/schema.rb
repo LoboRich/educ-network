@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_123100) do
+ActiveRecord::Schema.define(version: 2022_02_09_110728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(version: 2022_02_07_123100) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_activities_on_group_id"
+  end
+
+  create_table "activity_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "assignment_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -107,6 +112,7 @@ ActiveRecord::Schema.define(version: 2022_02_07_123100) do
     t.string "kind", default: "True or False"
     t.string "query_question"
     t.boolean "correct_answer"
+    t.integer "grading"
     t.uuid "activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
