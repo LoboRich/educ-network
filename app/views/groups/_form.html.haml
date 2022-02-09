@@ -8,7 +8,14 @@
 
   .field
     = f.label :img
-    = f.text_field :img
+    .custom-file
+      - if @direct_mode
+        = f.cl_image_upload :img, :accept => "image/*"
+      - else
+        %label.custom-file-upload.form-control{:for => "files"}
+          %i.fa.fa-upload.pt-1.float-right
+          Browse files
+        = f.file_field :img, :class => "custom-file-input d-none", :id => "files", :accept => "image/*"
   .field
     = f.hidden_field :user_id, value: current_user.id
   .field
