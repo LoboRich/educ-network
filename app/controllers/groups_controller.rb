@@ -12,15 +12,19 @@ class GroupsController < ApplicationController
     @class_student = @group.class_students.build
     @class_students = @group.class_students.where.not(id: nil)
     @students = User.where(role: 'student').collect{ |u| [u.fullname, u.id]}
+    @posts = @group.posts.where.not(id: nil).includes(:comments)
+    @post = @group.posts.build
   end
 
   # GET /groups/new
   def new
+    authorize Group, :new?
     @group = Group.new
   end
 
   # GET /groups/1/edit
   def edit
+    authorize Group, :edit?
   end
 
   # POST /groups or /groups.json
@@ -54,6 +58,7 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/1 or /groups/1.json
   def destroy
+    authorize Group, :destroy?
     @group.destroy
 
     respond_to do |format|

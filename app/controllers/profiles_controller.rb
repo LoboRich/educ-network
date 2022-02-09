@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
     def index
       @user = current_user
       @groups = @user.groups
+      @posts = current_user.posts.order("created_at DESC")
     end
-  
   end
   

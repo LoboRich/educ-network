@@ -11,6 +11,18 @@ class GroupPolicy < ApplicationPolicy
         'teacher'
       ].include?(user.role)
     end
+
+    def edit?
+      [
+        'teacher'
+      ].include?(user.role)
+    end
+
+    def destroy?
+      [
+        'teacher'
+      ].include?(user.role)
+    end
     
     class Scope
       attr_reader :user, :scope

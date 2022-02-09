@@ -1,21 +1,21 @@
 Rails.application.routes.draw do
   resources :activity_submissions
-  get 'classes/index'
   get 'activity/index'
-
-  resources :comments
 
   devise_for :users 
   resources :groups do
     resources :class_students
+    resources :posts do 
+      resources :comments
+    end
     resources :assignments do
       resources :assignment_submissions 
     end
     resources :activities
   end
 
-  resources :posts
-  get '/home', to: 'home#index'
+  get '/profile', to: 'profiles#index'
+  get 'home/index'
 
   devise_scope :user do
     get "/sign_out" => "users/sessions#destroy" 
