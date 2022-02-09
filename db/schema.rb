@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_142347) do
+ActiveRecord::Schema.define(version: 2022_02_09_110728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(version: 2022_02_04_142347) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_activities_on_group_id"
+  end
+
+  create_table "activity_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "assignment_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -103,6 +108,17 @@ ActiveRecord::Schema.define(version: 2022_02_04_142347) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "kind", default: "True or False"
+    t.string "query_question"
+    t.boolean "correct_answer"
+    t.integer "grading"
+    t.uuid "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_questions_on_activity_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -116,6 +132,10 @@ ActiveRecord::Schema.define(version: 2022_02_04_142347) do
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -125,4 +145,5 @@ ActiveRecord::Schema.define(version: 2022_02_04_142347) do
   add_foreign_key "assignment_submissions", "assignments"
   add_foreign_key "assignment_submissions", "users"
   add_foreign_key "assignments", "groups"
+  add_foreign_key "questions", "activities"
 end
