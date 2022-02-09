@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_020039) do
+ActiveRecord::Schema.define(version: 2022_02_09_110728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -35,6 +35,23 @@ ActiveRecord::Schema.define(version: 2022_02_05_020039) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.string "kind", default: "Quiz"
+    t.text "instructions"
+    t.string "status", default: "Unassigned"
+    t.datetime "due_date"
+    t.uuid "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_activities_on_group_id"
+  end
+
+  create_table "activity_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "assignment_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -90,6 +107,17 @@ ActiveRecord::Schema.define(version: 2022_02_05_020039) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "kind", default: "True or False"
+    t.string "query_question"
+    t.boolean "correct_answer"
+    t.integer "grading"
+    t.uuid "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_questions_on_activity_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -112,7 +140,9 @@ ActiveRecord::Schema.define(version: 2022_02_05_020039) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "groups"
   add_foreign_key "assignment_submissions", "assignments"
   add_foreign_key "assignment_submissions", "users"
   add_foreign_key "assignments", "groups"
+  add_foreign_key "questions", "activities"
 end

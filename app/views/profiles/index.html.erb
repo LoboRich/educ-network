@@ -6,28 +6,29 @@
       </div>
   </div>
 
-<div class="container mx-auto my-4">
-<h1> POSTS</h1>
-<% @posts.each do |post| %>
-  <div class="mx-4 my-2 md:mx-auto w-auto rounded-lg shadow-lg bg-white flex">
-    <div class="px-4 py-6 flex items-start">
-      <div class="w-10 h-10 mr-4">
-        <img src="http://source.unsplash.com/800x800" class="rounded-full shadow object-cover"/>
-      </div>
-      <div class="w-full">
-        <div class="flex items-center justify-start">
-          <h2 class="-mt-1 mr-1 text-base text-gray-900 font-semibold"><%= post.user.fullname%></h2>
-          <small class="text-sm text-gray-700">to <%= post.group.name %></small>
-        </div>
-        <div class="text-sm text-gray-500"><%= time_ago_in_words(post.created_at) %> ago</div>
-        <div class="mt-3 text-sm text-gray-700"><%= post.content %></div>
-        <div class="mt-4 flex items-center">
-          <div class="mr-4 text-sm text-gray-400 flex items-center">
-            <%= post.comments.count %> comments
+  <div class="container mx-auto my-4">
+    <h1> POSTS</h1>
+    <% @posts.each do |post| %>
+      <div class="mx-4 my-2 md:mx-auto w-auto rounded-lg shadow-lg bg-white flex">
+        <div class="px-4 py-6 flex items-start">
+          <div class="w-10 h-10 mr-4">
+            <img src="http://source.unsplash.com/800x800" class="rounded-full shadow object-cover"/>
+          </div>
+          <div class="w-full">
+            <div class="flex items-center justify-start">
+              <h2 class="-mt-1 mr-1 text-base text-gray-900 font-semibold"><%= post.user.fullname%></h2>
+              <small class="text-sm text-gray-700">to <%= post.group.name %></small>
+            </div>
+            <div class="text-sm text-gray-500"><%= time_ago_in_words(post.created_at) %> ago</div>
+            <div class="mt-3 text-sm text-gray-700"><%= post.content %></div>
+            <div class="mt-4 flex items-center">
+              <div class="mr-4 text-sm text-gray-400 flex items-center">
+                <%= post.comments.count %> comments
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
 </div>

@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :groups
   has_many :class_students
+
+  has_many :activities
+  
   has_many :posts
   enum roles: { admin: "admin", teacher: "teacher", student: "student", guardian: "guardian"}
 

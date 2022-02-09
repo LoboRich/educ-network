@@ -1,25 +1,12 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
-<!--
-  This example requires updating your template:
+<!-- Remove class [ h-64 ] when adding a card block -->
+<div class="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
+  <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
+  <div class="w-full h-full rounded border-dashed border-2 border-gray-300">
+    <h1> Home </h1>
+    <%= @user.fullname %>
+    <br>
 
-  ```
-  <html class="h-full bg-gray-100">
-  <body class="h-full">
-  ```
--->
-<header class="bg-white shadow">
-  <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-bold text-gray-900">
-      Welcome
-    </h1>
+    <%= @posts %>
+    <%= render 'groups/index' %>
   </div>
-</header>
-<main>
-  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <!-- Replace with your content -->
-    <div class="px-4 py-6 sm:px-0">
-      <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-    </div>
-    <!-- /End replace -->
-  </div>
-</main>
+</div>
