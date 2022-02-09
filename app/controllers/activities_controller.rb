@@ -9,6 +9,9 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1 or /activities/1.json
   def show
+    @questions = @activity.questions
+    @count = @questions.count
+    @points = @questions.sum(:grading)
   end
 
   # GET /activities/new
@@ -72,6 +75,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def activity_params
-      params.require(:activity).permit(:title, :instructions, questions_attributes: [:id, :query_question, :correct_answer])
+      params.require(:activity).permit(:title, :instructions, questions_attributes: [:id, :query_question, :correct_answer, :grading])
     end
 end
