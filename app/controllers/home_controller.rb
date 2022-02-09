@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
-  def index
-    if user_signed_in?
-      redirect_to(users_authenticated_root_path) and return
+  before_action :authenticate_user!
+    # GET /groups or /groups.json
+    def index
+      @user = current_user
+      @posts = Post.all
+      @groups = @user.groups
     end
-  end
 end
