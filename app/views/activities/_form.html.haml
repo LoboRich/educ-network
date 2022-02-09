@@ -21,10 +21,16 @@
         = questions_form.text_field :query_question
 
         = questions_form.label :correct_answer
+
         = questions_form.radio_button :correct_answer, "true"
         = questions_form.label :correct_answer_true, "True"
+
         = questions_form.radio_button :correct_answer, "false"
         = questions_form.label :correct_answer_false, "False"
+
+        = questions_form.label :grading
+        = questions_form.text_field :grading, value: 1
+      %hr/
 
   .actions
     = f.submit 'Save'
