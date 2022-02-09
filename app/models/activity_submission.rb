@@ -1,0 +1,2 @@
+class ActivitySubmission < ApplicationRecord
+end

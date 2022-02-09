@@ -1,0 +1,19 @@
+%h1 Listing activity_submissions
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @activity_submissions.each do |activity_submission|
+      %tr
+        %td= link_to 'Show', activity_submission
+        %td= link_to 'Edit', edit_activity_submission_path(activity_submission)
+        %td= link_to 'Destroy', activity_submission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Activity submission', new_activity_submission_path
