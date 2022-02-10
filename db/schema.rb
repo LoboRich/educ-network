@@ -50,8 +50,13 @@ ActiveRecord::Schema.define(version: 2022_02_09_110728) do
   end
 
   create_table "activity_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.boolean "answer"
+    t.uuid "user_id", null: false
+    t.uuid "activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_activity_submissions_on_activity_id"
+    t.index ["user_id"], name: "index_activity_submissions_on_user_id"
   end
 
   create_table "assignment_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -142,6 +147,8 @@ ActiveRecord::Schema.define(version: 2022_02_09_110728) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "groups"
+  add_foreign_key "activity_submissions", "activities"
+  add_foreign_key "activity_submissions", "users"
   add_foreign_key "assignment_submissions", "assignments"
   add_foreign_key "assignment_submissions", "users"
   add_foreign_key "assignments", "groups"
