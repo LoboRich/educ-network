@@ -57,6 +57,43 @@
         %div{class: "Create-new-assignment bg-gray-500 shadow rounded px-2 py-1 text-white hover:bg-my-blue transition-colors duration-250"}
           %span{class: "text-lg"}Create  Assignment   
 
+  %br
+
+  -# Activity Table
+  .-my-2.py-2.overflow-x-auto{:class => "sm:-mx-6.sm:px-6.lg:-mx-8.lg:px-8 w-full"}
+    .align-middle.inline-block.min-w-full.shadow.overflow-hidden{:class => "sm:rounded-lg.border-b.border-gray-200 w-full"}
+      %table.min-w-full
+        %thead
+          %tr
+            %th.px-6.py-3.border-b.border-gray-200.bg-gray-50.text-left.text-xs.leading-4.font-medium.text-gray-500.uppercase.tracking-wider
+              Activity Title
+            %th.px-6.py-3.border-b.border-gray-200.bg-gray-50.text-left.text-xs.leading-4.font-medium.text-gray-500.uppercase.tracking-wider
+              Status
+            %th.px-6.py-3.border-b.border-gray-200.bg-gray-50.text-left.text-xs.leading-4.font-medium.text-gray-500.uppercase.tracking-wider
+              No. of Submissions
+            %th.px-6.py-3.border-b.border-gray-200.bg-gray-50.text-left.text-xs.leading-4.font-medium.text-gray-500.uppercase.tracking-wider
+              Action
+        %tbody{class: "bg-white"}
+          - for activity in @group.activities
+            %tr
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200
+                .flex.items-center
+                  .ml-4
+                    .text-sm.leading-5.font-medium.text-gray-900
+                      = activity.title
+                    .text-sm.leading-5.text-gray-500 
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200
+                %span.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-green-100.text-green-800 Ongoing
+              -# Insert Number of Submissions Code
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+                10
+              -# Insert View Activity Code
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+                = link_to "View", group_activity_path(@group, activity) 
+      = link_to new_group_activity_path(@group), :class => "text-center self-start hover:bg-transparent" do 
+        %div{class: "Create-new-assignment bg-gray-500 shadow rounded px-2 py-1 text-white hover:bg-my-blue transition-colors duration-250"}
+          %span{class: "text-lg"}Create Activity
+
 %br
 %h1 Add student
 = render 'class_students/index'
