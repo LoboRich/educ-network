@@ -29,7 +29,7 @@ module.exports = {
       'my-pink': '#F7D6BF',
       'my-white': '#FAEEE7',
       'my-teal': '#24A19C',
-      'my-blue': '#005086',
+      'my-blue': '#318FB5',
       'my-silver': '#B0CAC7',
       'my-light-blue': '#e4ebf1'
 
