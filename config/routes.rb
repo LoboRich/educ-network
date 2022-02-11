@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :activity_submissions
+  get 'activity/index'
+
   devise_for :users 
   resources :groups do
     resources :class_students
@@ -8,6 +11,7 @@ Rails.application.routes.draw do
     resources :assignments do
       resources :assignment_submissions 
     end
+    resources :activities
   end
 
   get '/profile', to: 'profiles#index'
@@ -17,7 +21,7 @@ Rails.application.routes.draw do
     get "/sign_out" => "users/sessions#destroy" 
     authenticated :user do
       namespace :users do
-        get 'dashboard/index', as: :authenticated_root
+        get 'classes/index', as: :classes
       end
     end
   end

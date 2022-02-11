@@ -31,9 +31,12 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'hamlit-rails'
 gem 'pry'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'rmagick'
 gem "pundit"
 gem "rest-client"
+gem 'mailcatcher'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

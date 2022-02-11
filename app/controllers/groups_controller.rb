@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
     @students = User.where(role: 'student').collect{ |u| [u.fullname, u.id]}
     @posts = @group.posts.where.not(id: nil).includes(:comments)
     @post = @group.posts.build
+    @assignments = @group.posts.where.not(id: nil).includes(:comments)
   end
 
   # GET /groups/new

@@ -1,0 +1,2 @@
+module ActivitySubmissionsHelper
+end

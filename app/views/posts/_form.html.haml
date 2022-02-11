@@ -5,11 +5,10 @@
       %ul
         - @post.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :content
-    = f.text_field :content
-  .field
-    = f.hidden_field :user_id, value: current_user.id
-  .actions
-    = f.submit 'Save'
+  %div{class: "flex flex-col gap-2"}
+    %field
+      = f.label :content
+      = f.text_area :content, :class => "bg-gray-50 w-full rounded shadow border border-gray-200 text-gray-800 text-base p-2", :placeholder => "Post something", :row => "5"
+    %field{class: "flex justify-end"}
+      = f.hidden_field :user_id, value: current_user.id
+      = f.submit 'Send', :class => "bg-my-blue font-bold hover:opacity-75 cursor-pointer text-white p-2 rounded-lg w-32 transition-opacity duration-200"

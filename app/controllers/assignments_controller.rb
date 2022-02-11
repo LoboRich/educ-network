@@ -10,6 +10,7 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/1 or /assignments/1.json
   def show
+    @assignment_submission = @assignment.assignment_submissions.build
   end
 
   # GET /assignments/new

@@ -1,0 +1,12 @@
+production:
+  cloud_name: "dlw7mt9br"
+  api_key: "839237529277187"
+  api_secret: "pcXmMr7dmDJ5KgP_lsr2giQkC9k"
+  secure: true
+  cdn_subdomain: true
+development:
+  cloud_name: "dlw7mt9br"
+  api_key: "839237529277187"
+  api_secret: "pcXmMr7dmDJ5KgP_lsr2giQkC9k"
+  secure: true
+  cdn_subdomain: true

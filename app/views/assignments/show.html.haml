@@ -1,15 +1,19 @@
-%p#notice= notice
+%div{class: "container mx-auto px-6 py-8 gap-2 flex flex-col w-full  justify-center items-center md:items-start"}
+  %div{class: "container-banner flex w-full h-40 bg-cover"}
+    = image_tag "SchoolBannerTeal.png", :class => 'rounded flex-shrink-0 min-w-full min-h-full shadow'
+  %p#notice= notice
+  %div{class:"flex items-between justify-center gap-2 w-full bg-white p-8 rounded"}
+    %div{class: "flex flex-col gap-4 w-full items-start text-3xl"}
+      %span{class: "text-xl border-b pb-2 border-gray-300"}= @assignment.group.name
+      %div{class: "flex text-xl gap-3 justify-center md:justify-start items-center"}
+        %span{class: "text-lg text-gray-500"} Assignment Title: 
+        %span{class: "text-lg"}= @assignment.title
+      %div{class: "flex flex-col md:gap-3 md:flex-row text-xl justify-center md:justify-start items-center"}
+        %span{class: "text-base text-gray-500"}Instructions: 
+        %span{class: "text-base"}= @assignment.instructions 
 
-%p
-  %b Title:
-  = @assignment.title
-%p
-  %b Instructions:
-  = @assignment.instructions
-%p
-  %b Group:
-  = @assignment.group
+      = link_to 'Edit Assignment', edit_group_assignment_path(@group, @assignment), :class => "w-40 self-end bg-my-blue flex items-center justify-center rounded text-base py-1 px-4 text-white hover:bg-my-blue hover:opacity-75 transition-opacity duration-200", :style=>'color:#FFFFFF;'
+  
+  = render 'assignment_submissions/form'
 
-= link_to 'Edit', edit_group_assignment_path(@group, @assignment)
-\|
-= link_to 'Back', group_assignments_path(@group)
+  = link_to 'Back to Group', group_path(@group), :class => "my-4 bg-my-blue flex items-center justify-center rounded text-base py-1 px-4 text-white hover:bg-my-blue hover:opacity-75 transition-opacity duration-200", :style=>'color:#FFFFFF;'
