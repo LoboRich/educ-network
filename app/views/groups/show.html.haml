@@ -57,6 +57,8 @@
         %div{class: "Create-new-assignment bg-gray-500 shadow rounded px-2 py-1 text-white hover:bg-my-blue transition-colors duration-250"}
           %span{class: "text-lg"}Create  Assignment   
 
+= image_tag(@group.img, :width => 150, :height => 150)
+
 %br
 %h1 Add student
 = render 'class_students/index'
