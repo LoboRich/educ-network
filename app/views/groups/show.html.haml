@@ -1,11 +1,11 @@
 .container.mx-auto.w-full.mt-8.py-10.min-w-full.sm:px-6.lg:px-8.bg-white.rounded
   -# Container for class banner. Change image_tag code to a link to the image file of each class
   .w-full.bg-white.rounded-lg.mx-auto.flex.overflow-hidden.rounded-b-none
-    %div{class: "flex w-full h-40 bg-cover mt-10 py-8"}
+    %div{class: "flex w-full h-100 bg-cover"}
       = image_tag "MathClassBanner.png", :class => 'rounded flex-shrink-0 min-w-full min-h-full shadow' 
         
   %p#notice= notice
-  %div{class:"flex items-between justify-center gap-2 w-full my-8"}
+  %div{class:"flex items-between justify-center gap-2 w-full my-4"}
     %div{class: "flex flex-col gap-2 w-full text-3xl"}
       %span{class: "text-3xl font-bold"}= "#{@group.name} (#{@teacher.fullname})"
       -# %div{class: "flex flex-col md:flex-row text-xl gap-3"}
@@ -19,8 +19,8 @@
         %span{class: "text-white text-base"} Edit Group
       = link_to @group, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "w-40 text-white flex gap-2 self-center px-8 w-32 py-1 rounded bg-my-pink hover:bg-my-blue hover:opacity-80 flex items-center justify-center transition duration-250" do 
         %span{class: "text-white text-base"} Delete Group
-  %ul.flex.border-b.border-light-blue.text-sm.font-medium.text-my-blue.mt-10.px-4.md:px-0
-    
+.container.mx-auto.w-full.mt-8.py-10.min-w-full.sm:px-6.lg:px-8.bg-white.rounded
+  %ul.flex.border-b.border-light-blue.text-sm.font-medium.text-my-blue.px-4.md:px-0
     %li.font-bold.hover:text-my-pink
       %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#_"} Activities
     %li.font-bold.text-my-blue.border-b-2.border-my-pink.bg-my-pink
