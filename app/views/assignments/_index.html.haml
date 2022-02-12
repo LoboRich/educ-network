@@ -1,0 +1,33 @@
+= render :partial => 'layouts/table_links'
+.w-full.mt-10
+  %table#assignments.stripe.hover.w-full.mt-10.py-8
+    %thead.bg-my-light-blue.dark:bg-white
+      %tr
+        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Title
+        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Instructions
+        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Submissions
+        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Actions
+
+    %tbody{class: "bg-white"}
+      - for assignment in @group.assignments
+        %tr
+          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+            =assignment.title
+          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+            =assignment.instructions
+          %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+            = assignment.assignment_submissions.count
+          -# Insert View Assignment Code
+          %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500.flex.gap-4
+            =link_to "View / Submit", group_assignment_path(@group, assignment) 
+
+= link_to new_group_assignment_path(@group), :class => "text-center self-start hover:bg-transparent" do 
+  %div{class: "Create-new-assignment bg-my-blue shadow mt-10 rounded px-2 py-1 text-white hover:bg-my-silver transition-colors duration-250"}
+    %span{class: "text-lg"}Create  Assignment   
+
+:javascript
+  var table = $('#assignments').DataTable( {
+    responsive: true
+  } )
+  .columns.adjust()
+  .responsive.recalc();
