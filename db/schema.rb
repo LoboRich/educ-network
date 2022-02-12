@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_110728) do
     t.uuid "user_id"
     t.string "name"
     t.text "description"
+    t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
