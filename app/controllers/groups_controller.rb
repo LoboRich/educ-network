@@ -3,13 +3,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
   # GET /groups or /groups.json
   def index
-    if current_user.role == 'teacher'
-      @groups = current_user.groups
-    elsif current_user.role == 'student'
-      @groups = ClassStudent.where(user_id: current_user.id).map{|x| x.group}.uniq
-    else
-      @groups = Group.all
-    end
+    @groups = GroupsHelper.list(current_user)
   end
 
   # GET /groups/1 or /groups/1.json

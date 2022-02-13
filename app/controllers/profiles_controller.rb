@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     end
 
     def feed
-      @groups = current_user.groups
+      @groups = GroupsHelper.list(current_user)
       @posts = current_user.posts.order("created_at DESC")
       @post = Post.new
       @comment = Comment.new
