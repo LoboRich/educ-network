@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root :to => "profiles#index"
+  root :to => "groups#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'classpage', to: 'html_pages#classpage'
 end
