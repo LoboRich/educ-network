@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :set_post, except: %i[ create2 ]
-  before_action :set_group, except: %i[ create2 ]
+  before_action :set_post
+  before_action :set_group
   # GET /comments or /comments.json
   def index
     @comments = @post.comments
@@ -33,17 +33,6 @@ class CommentsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def create2
-    @comment = Comment.new(comment_params)
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to '/feed', notice: "Comment was successfully created." }
-      else
-        format.html { redirect_to '/feed', notice: "Comment was not created." }
       end
     end
   end

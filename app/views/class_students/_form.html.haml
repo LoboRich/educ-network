@@ -1,18 +1,17 @@
-- if current_user.role == 'teacher'
-  .w-full.max-w-sm
-    = form_with(model: [@group, @class_student], local: true) do |f|
-      - if @class_student.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@class_student.errors.count, "error")} prohibited this class_student from being saved:"
-          %ul
-            - @class_student.errors.full_messages.each do |msg|
-              %li= msg
-      .flex.items-center.border-b.border-teal-500.py-2
-        = f.select :user_id, options_for_select(@students.collect{ |u| [u.email, u.id]}), {}, {required: true, class: 'js-example-theme-single appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none'}
-        -#%input.appearance-none.bg-transparent.border-none.w-full.text-gray-700.mr-3.py-1.px-2.leading-tight.focus:outline-none(aria-label="Full name" placeholder="Jane Doe" type="text")/
-        = f.hidden_field :status, value: 'Joined'
-        = f.submit 'Add Student',required: true, :class => 'flex-shrink-0 bg-my-blue hover:bg-my-light-blue border-my-blue hover:border-my-light-blue text-sm border-4 text-white py-1 px-2 rounded'
 
 
-:javascript
-  $(".js-example-theme-single").select2();
+= form_with(model: [@group, @class_student], local: true) do |f|
+  - if @class_student.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@class_student.errors.count, "error")} prohibited this class_student from being saved:"
+      %ul
+        - @class_student.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :user_id
+    = f.select :user_id, options_for_select(@students), {} ,{:required => "true"}
+  .field
+    = f.label :status
+    = f.text_field :status, value: 'Joined'
+  .actions
+    = f.submit 'Save'
