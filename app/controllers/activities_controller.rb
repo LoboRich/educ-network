@@ -12,6 +12,8 @@ class ActivitiesController < ApplicationController
     @questions = @activity.questions
     @count = @questions.count
     @points = @questions.sum(:grading)
+    @submission = @activity.activity_submissions.where(user_id: current_user.id).first
+    @score = @submission != nil ? @submission.answers.sum(:grading) : 0
   end
 
   # GET /activities/new
@@ -75,6 +77,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def activity_params
-      params.require(:activity).permit(:title, :instructions, questions_attributes: [:id, :query_question, :correct_answer, :grading])
+      params.require(:activity).permit(:title, :instructions, questions_attributes: [:id, :numbering, :query_question, :correct_answer, :grading])
     end
 end
