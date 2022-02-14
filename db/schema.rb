@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_110728) do
+ActiveRecord::Schema.define(version: 2022_02_14_124941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_110728) do
     t.float "grade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "myfile"
     t.index ["assignment_id"], name: "index_assignment_submissions_on_assignment_id"
     t.index ["user_id"], name: "index_assignment_submissions_on_user_id"
   end
@@ -95,7 +96,6 @@ ActiveRecord::Schema.define(version: 2022_02_09_110728) do
     t.uuid "user_id"
     t.string "name"
     t.text "description"
-    t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
