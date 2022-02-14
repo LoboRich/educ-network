@@ -19,6 +19,11 @@ class AssignmentSubmissionsController < ApplicationController
 
   # GET /assignment_submissions/1/edit
   def edit
+    
+  end
+
+  def edit_grade
+    @assignment_submission = AssignmentSubmission.find(params[:assignment_submission_id])
   end
 
   # POST /assignment_submissions or /assignment_submissions.json
@@ -41,7 +46,7 @@ class AssignmentSubmissionsController < ApplicationController
   def update
     respond_to do |format|
       if @assignment_submission.update(assignment_submission_params)
-        format.html { redirect_to  group_assignments_path(@group, @assignment), notice: "Assignment submission was successfully updated." }
+        format.html { redirect_to  group_assignment_path(@group, @assignment), notice: "Assignment submission was successfully updated." }
         format.json { render :show, status: :ok, location: @assignment_submission }
       else
         format.html { render :edit, status: :unprocessable_entity }

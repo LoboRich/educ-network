@@ -80,7 +80,7 @@
                     = post.comments.count 
                     comments
 
-= image_tag(@group.img, :width => 150, :height => 150)
+= image_tag(@group.img.to_s, :width => 150, :height => 150)
 
 %br
 %h1 Add student

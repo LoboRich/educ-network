@@ -11,6 +11,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1 or /assignments/1.json
   def show
     @assignment_submission = @assignment.assignment_submissions.build
+    @assignment_submissions = @assignment.assignment_submissions
   end
 
   # GET /assignments/new

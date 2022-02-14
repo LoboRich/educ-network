@@ -15,5 +15,9 @@
       = link_to 'Edit Assignment', edit_group_assignment_path(@group, @assignment), :class => "w-40 self-end bg-my-blue flex items-center justify-center rounded text-base py-1 px-4 text-white hover:bg-my-blue hover:opacity-75 transition-opacity duration-200", :style=>'color:#FFFFFF;'
   
   = render 'assignment_submissions/form'
+  = render 'assignment_submissions/aslist'
+
+
+
 
   = link_to 'Back to Group', group_path(@group), :class => "my-4 bg-my-blue flex items-center justify-center rounded text-base py-1 px-4 text-white hover:bg-my-blue hover:opacity-75 transition-opacity duration-200", :style=>'color:#FFFFFF;'
