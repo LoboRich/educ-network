@@ -12,11 +12,13 @@
 
       = f.hidden_field :user_id, value: current_user.id
       %div{class: "flex flex-col md:flex-row gap-3 items-center"}
+        %span{class: "text-lg"} Upload File: 
         %label{class: "cursor-pointer text-lg"}
-          Upload New File
-          %i{class: "fas fa-upload"}
-          %span{style: "display:none;"}
-            = f.file_field :file
+          - if @direct_mode
+            = f.cl_image_upload :myfile
+          - else
+            = f.file_field :myfile, :id => "files"
+          -# = f.cl_image(:file, allowed_formats:["jpg", "jpeg", "pdf", "png", "doc", "docx", "txt"], :resource_type => 'auto')
       %div{class: "flex flex-col gap-4"}
         = f.label :body, :class => "text-lg"
         = f.text_area :body, :class => "rounded border-gray-300 px-4 py-2 w-full"

@@ -19,13 +19,18 @@ class AssignmentSubmissionsController < ApplicationController
 
   # GET /assignment_submissions/1/edit
   def edit
+    
+  end
+
+  def edit_grade
+    @assignment_submission = AssignmentSubmission.find(params[:assignment_submission_id])
   end
 
   # POST /assignment_submissions or /assignment_submissions.json
   def create
+    # binding.pry
     @assignment_submission = @assignment.assignment_submissions.build(assignment_submission_params)
-    @assignment.assignment_submissions << @assignment_submission
-
+    
     respond_to do |format|
       if @assignment_submission.save
         format.html { redirect_to group_assignments_path(@group, @assignment), notice: "Assignment submission was successfully created." }
@@ -41,7 +46,7 @@ class AssignmentSubmissionsController < ApplicationController
   def update
     respond_to do |format|
       if @assignment_submission.update(assignment_submission_params)
-        format.html { redirect_to  group_assignments_path(@group, @assignment), notice: "Assignment submission was successfully updated." }
+        format.html { redirect_to  group_assignment_path(@group, @assignment), notice: "Assignment submission was successfully updated." }
         format.json { render :show, status: :ok, location: @assignment_submission }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -77,6 +82,6 @@ class AssignmentSubmissionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def assignment_submission_params
-      params.require(:assignment_submission).permit(:assignment_id, :user_id, :file, :body, :grade)
+      params.require(:assignment_submission).permit(:user_id, :myfile, :body, :grade)
     end
 end
