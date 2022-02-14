@@ -1,6 +1,6 @@
 %div{class: "container mx-auto px-6 py-8 gap-2 flex flex-col w-full  justify-center items-center md:items-start"}
-  %div{class: "container-banner flex w-full h-40 bg-cover"}
-    = image_tag "SchoolBannerTeal.png", :class => 'rounded flex-shrink-0 min-w-full min-h-full shadow'
+  -# %div{class: "container-banner flex w-full h-40 bg-cover"}
+  -#   = image_tag "SchoolBannerTeal.png", :class => 'rounded flex-shrink-0 min-w-full min-h-full shadow'
   %p#notice= notice
   %div{class:"flex items-between justify-center gap-2 w-full bg-white p-8 rounded"}
     %div{class: "flex flex-col gap-4 w-full items-start text-3xl"}
@@ -14,10 +14,10 @@
 
       = link_to 'Edit Assignment', edit_group_assignment_path(@group, @assignment), :class => "w-40 self-end bg-my-blue flex items-center justify-center rounded text-base py-1 px-4 text-white hover:bg-my-blue hover:opacity-75 transition-opacity duration-200", :style=>'color:#FFFFFF;'
   
-  = render 'assignment_submissions/form'
-  = render 'assignment_submissions/aslist'
-
-
-
+  - if current_user.role == "student"
+    = render 'assignment_submissions/form'
+  - elsif current_user.role == "teacher"
+    = render 'assignment_submissions/aslist'
+  - else
 
   = link_to 'Back to Group', group_path(@group), :class => "my-4 bg-my-blue flex items-center justify-center rounded text-base py-1 px-4 text-white hover:bg-my-blue hover:opacity-75 transition-opacity duration-200", :style=>'color:#FFFFFF;'

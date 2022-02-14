@@ -13,7 +13,7 @@
           %th.px-6.py-3.border-b.border-gray-200.bg-my-teal.font-bold.text-white.text-left.text-xs.leading-4.font-medium.uppercase.tracking-wider
             Body
           %th.px-6.py-3.border-b.border-gray-200.bg-my-teal.font-bold.text-white.text-left.text-xs.leading-4.font-medium.uppercase.tracking-wider
-            Action
+            Actions
           %th.px-6.py-3.border-b.border-gray-200.bg-my-teal.font-bold.text-white.text-left.text-xs.leading-4.font-medium.uppercase.tracking-wider
             Grade
       %tbody{class: "bg-white"}
@@ -27,17 +27,17 @@
                       %div{class: "flex flex-row gap-2"}
                         %span= assignment_submission.try(:user).try(:first_name)
                         %span= assignment_submission.try(:user).try(:last_name)
-                    .text-sm.leading-5.text-gray-500 
-              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+                    .text-sm.leading-5.text-gray-800 
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-800
                 = assignment_submission.created_at.to_date if assignment_submission.created_at?
               -#Body
-              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-800
                 = assignment_submission.body
               -# Download Link
-              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500.flex.flex-row.gap-4
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-800.flex.flex-row.gap-4
                 = link_to 'Download', assignment_submission.file, download: '' if assignment_submission.file.attached?
                 = link_to 'Grade', "/groups/#{@group.id}/assignments/#{@assignment.id}/assignment_submissions/#{assignment_submission.id}/edit"
-              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+              %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-800
                 = assignment_submission.grade
             
 
