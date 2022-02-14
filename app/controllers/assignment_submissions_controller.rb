@@ -28,9 +28,9 @@ class AssignmentSubmissionsController < ApplicationController
 
   # POST /assignment_submissions or /assignment_submissions.json
   def create
+    # binding.pry
     @assignment_submission = @assignment.assignment_submissions.build(assignment_submission_params)
-    @assignment.assignment_submissions << @assignment_submission
-
+    
     respond_to do |format|
       if @assignment_submission.save
         format.html { redirect_to group_assignments_path(@group, @assignment), notice: "Assignment submission was successfully created." }
@@ -82,6 +82,6 @@ class AssignmentSubmissionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def assignment_submission_params
-      params.require(:assignment_submission).permit(:assignment_id, :user_id, :file, :body, :grade)
+      params.require(:assignment_submission).permit(:user_id, :myfile, :body, :grade)
     end
 end
