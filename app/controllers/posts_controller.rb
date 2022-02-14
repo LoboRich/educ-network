@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :set_group
+  before_action :set_group, except: %i[ create2 ]
   # GET /posts or /posts.json
   def index
     @posts = @group.posts
@@ -35,6 +35,18 @@ class PostsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create2
+    @post = Post.new(post_params)
+    
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to '/feed', notice: "Post was successfully created." }
+      else
+        format.html { redirect_to '/feed', notice: "Post was not created." }
       end
     end
   end

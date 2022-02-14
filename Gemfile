@@ -31,7 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'hamlit-rails'
 gem 'pry'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'rmagick'
 gem "pundit"
 gem "rest-client"
 gem 'mailcatcher'
