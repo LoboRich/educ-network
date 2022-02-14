@@ -1,31 +1,43 @@
-= form_with model: [ @group, @activity, @activity_submission ] do |f|
-  - if @activity_submission.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@activity_submission.errors.count, "error")} prohibited this activity_submission from being saved:"
-      %ul
-        - @activity_submission.errors.full_messages.each do |msg|
-          %li= msg
+%div{ :class => "mt-10 sm:mt-0" }
+  %div{ :class => "flex justify-center" }
+    %div{ :class => "mt-5 md:mt-0 md:col-span-2", :style => "min-width: 500px" }
+      = form_with model: [ @group, @activity, @activity_submission ] do |f|
+        - if @activity_submission.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@activity_submission.errors.count, "error")} prohibited this activity_submission from being saved:"
+            %ul
+              - @activity_submission.errors.full_messages.each do |msg|
+                %li= msg
+        
+        = f.hidden_field :user_id, value: current_user.id
 
-  = f.hidden_field :user_id, value: current_user.id
-  
-  .field
-    = f.fields_for :answers do |answers_form|
-      .field
-        = answers_form.label :number, (answers_form.index + 1)
+        = f.fields_for :answers do |answers_form|
+          %div{ :class => "shadow overflow-hidden sm:rounded-md py-1" }
+            %div{ :class => "px-4 py-5 bg-white space-y-6 sm:p-6" }
+              %fieldset
+                %div
+                  %legend{ :class => "text-base font-medium text-gray-900" }
+                    Question #{(answers_form.index + 1)}
 
-        = answers_form.label :question, @questions[answers_form.index].query_question
-        = answers_form.hidden_field :question_id, value: @questions[answers_form.index].id
+                  .py-2
+                    .border-t.border-gray-200
+                  
+                  %p{ :class => "text-sm text-gray-700" }
+                    = @questions[answers_form.index].query_question
+                  
+                  = answers_form.hidden_field :question_id, value: @questions[answers_form.index].id
 
-        = answers_form.label :answer
+                %div{ :class => "mt-4 space-y-4" }
+                  %div{ :class => "flex items-center" }
+                    = answers_form.radio_button :answer, "true", class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    = answers_form.label :answer_true, "True", class: "ml-3 block text-sm font-medium text-gray-700"
 
-        = answers_form.radio_button :answer, "true"
-        = answers_form.label :answer_true, "True"
+                  %div{ :class => "flex items-center" }
+                    = answers_form.radio_button :answer, "false", class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    = answers_form.label :answer_false, "False", class: "ml-3 block text-sm font-medium text-gray-700"
 
-        = answers_form.radio_button :answer, "false"
-        = answers_form.label :answer_false, "False"
+                = answers_form.hidden_field :grading, value: 0
 
-        = answers_form.hidden_field :grading, value: 0
-      %hr/
-
-  .actions
-    = f.submit 'Save'
+        %div{ :class => "px-4 py-3 bg-gray-50 text-right sm:px-6" }
+          = f.submit 'Submit', class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          -# <button type="submit" :class =>  }Save

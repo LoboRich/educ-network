@@ -30,9 +30,10 @@
   %table#activities.min-w-full.divide-y.divide-gray-200.py-8
     %thead.bg-my-light-blue.dark:bg-white
       %tr
-        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Name
-        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Email
-        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} status
+        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Title
+        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Type
+        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Instructions
+        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Action
 
     %tbody{class: "bg-white"}
       - @activities.each do |activity|
@@ -43,6 +44,8 @@
             = activity.kind
           %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
             = activity.instructions
+          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+            = link_to 'Show', group_activity_path(@group, activity)
           -# -# Insert View Assignment Code
           -# %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500.flex.gap-4
           -#   =link_to "View / Submit", group_assignment_path(@group, assignment) 
