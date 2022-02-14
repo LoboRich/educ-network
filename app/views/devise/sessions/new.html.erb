@@ -1,51 +1,62 @@
-<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Sign in to your account
-      </h2>
-      <p class="mt-2 text-center text-sm text-gray-600">
-        Or
-        <%= link_to "start your 14-day free trial", new_user_registration_path, :class => "font-medium text-indigo-600 hover:text-indigo-500" %>
-      </p>
-    </div>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'mt-8 space-y-6'}) do |f| %>
-      <input type="hidden" name="remember" value="true">
-      <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          <%= f.label :email, "Email address", :class => "sr-only" %><br />
-          <%= f.email_field :email, autofocus: true, :class => "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Email address" %>
+        <div class="lg:flex overflow-hidden">
+            <div class="lg:w-1/2 xl:max-w-screen-sm ">
+                <div class="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
+                    <div class="cursor-pointer flex items-center">
+                        <div>
+                            <svg class="w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 225 225" style="enable-background:new 0 0 225 225;" xml:space="preserve">
+                                <style type="text/css">
+                                    .st0{fill:none;stroke:currentColor;stroke-width:20;stroke-linecap:round;stroke-miterlimit:3;}
+                                </style>
+                                <g transform="matrix( 1, 0, 0, 1, 0,0) ">
+                                <g>
+                                <path id="Layer0_0_1_STROKES" class="st0" d="M173.8,151.5l13.6-13.6 M35.4,89.9l29.1-29 M89.4,34.9v1 M137.4,187.9l-0.6-0.4     M36.6,138.7l0.2-0.2 M56.1,169.1l27.7-27.6 M63.8,111.5l74.3-74.4 M87.1,188.1L187.6,87.6 M110.8,114.5l57.8-57.8"/>
+                                </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="text-2xl text-indigo-800 tracking-wide ml-2 font-semibold">Teachbook</div>
+                    </div>
+                </div>
+                <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+                    <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
+                    xl:text-bold">Log in</h2>
+                    
+                    <div class="mt-12">
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'mt-12'}) do |f| %>
+                            <div>
+                                <%= f.label :email, "Email address", :class => "text-sm font-bold text-gray-700 tracking-wide" %><br />
+                                <%= f.email_field :email, autofocus: true, :class => "w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500", placeholder: "Email address" %>
+                            </div>
+                            <div class="mt-8">
+                                <div class="flex justify-between items-center">
+                                    <div class="text-sm font-bold text-gray-700">
+                                      <%= f.label :password, "Password" %></br>
+                                    </div>
+                                    <div>
+                                        <a class="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
+                                        cursor-pointer">
+                                          <%= link_to "Forgot your password?", new_password_path(resource_name), :class => "font-medium text-indigo-600 hover:text-indigo-500" %>
+                                        </a>
+                                    </div>
+                                </div>
+                                <%= f.password_field :password, :class => "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Password" %>
+                            </div>
+                            <div class="mt-10">
+                                <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                                shadow-lg">
+                                    Log In
+                                </button>
+                            </div>
+                    <% end %>
+                        <div class="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
+                            Don't have an account ?
+                            <%= link_to "Sign up", new_user_registration_path, :class => "cursor-pointer hover:bg-sky-700" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
+                 <%= image_tag "login-pic.jpeg", class: "h-scre" %>
+            </div>
         </div>
-        <div>
-          <%= f.label :password, "Password", :class => "sr-only" %><br />
-          <%= f.password_field :password, :class => "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Password" %>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <% if devise_mapping.rememberable? %>
-          <div class="flex items-center">
-            <%= f.check_box :remember_me, :class => "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
-            <%= f.label :remember_me, :class => "ml-2 block text-sm text-gray-900" %>
-          </div>
-        <% end %>
-
-        <div class="text-sm">
-          <%= link_to "Forgot your password?", new_password_path(resource_name), :class => "font-medium text-indigo-600 hover:text-indigo-500" %>
-        </div>
-      </div>
-
-      <div>
-        <%= button_tag(type: 'submit', class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", id: 'validForm') do %>
-          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <!-- Heroicon name: solid/lock-closed -->
-            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-            </svg>
-          </span>
-          Sign in
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
