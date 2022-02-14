@@ -1,3 +1,25 @@
+.container.mx-auto.w-full.mt-8.py-10.min-w-full.sm:px-6.lg:px-8.bg-white.rounded
+  
+  %p#notice= notice
+  %div{class:"flex items-between justify-center gap-2 w-full my-4"}
+    %div{class: "flex flex-col gap-2 w-full text-3xl"}
+      %span{class: "text-3xl text-my-blue font-bold"}= "#{@group.name} (#{@group.user.fullname})"
+      -# %div{class: "flex flex-col md:flex-row text-xl gap-3"}
+      -#   %span{class: "text-gray-500"} Teacher:
+      -#   %span= @teacher.fullname
+      %div{class: "flex flex-col md:flex-row text-xl gap-3"}
+        %span{class: "text-base text-gray-600"}Description: 
+        %span{class: "text-base"}= @group.description
+
+  %ul.flex.border-b.border-light-blue.text-sm.font-medium.text-my-blue.px-4.md:px-0.mt-8.w-auto
+    %li.font-bold.hover:text-my-pink
+      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_path(@group)}#_"} Students
+    %li.font-bold.hover:text-my-pink
+      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_activities_path(@group)}#_"} Activities
+    %li.font-bold.text-my-blue.border-b-2.border-my-pink.bg-my-pink
+      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_assignments_path(@group)}#_"} Assignments
+  
+
 = render :partial => 'layouts/table_links'
 .flex.flex-col.md:flex-row.items-center.justify-between.w-full.mt-8
   %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0 Assignments
@@ -16,14 +38,13 @@
     %tbody{class: "bg-white"}
       - for assignment in @group.assignments
         %tr
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+          %td.py-4.px-6.text-sm.font-medium.whitespace-nowrap
             =assignment.title
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+          %td.py-4.px-6.text-sm.font-medium.whitespace-nowrap
             =assignment.instructions
-          %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500
+          %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5
             = assignment.assignment_submissions.count
-          -# Insert View Assignment Code
-          %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500.flex.gap-4
+          %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.flex.gap-4
             =link_to "View / Submit", group_assignment_path(@group, assignment) 
 
 

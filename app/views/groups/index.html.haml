@@ -8,7 +8,7 @@
   -# %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0.mt-8 Classes
   .grid.grid-cols-4.gap-4.mt-8
     - @groups.each do |group|
-      = link_to group, :class => "hover:bg-gray-100 w-full transition ease-in duration-200 rounded-lg" do
+      = link_to group, :class => "hover:text-gray-800 text-gray-500 hover:bg-gray-300 w-full transition ease-in duration-200 rounded-lg" do
         .m-2
           .component.flex.max-w-sm.mt-8   
             %div{class: "flex flex-col md:flex-row items-center justify-between w-full"}
@@ -17,7 +17,7 @@
                 .p-6.py-8
                   .text-lg.font-bold
                     = group.name
-                  .flex.mt-4.text-sm.text-gray-900.justify-between
+                  .flex.mt-4.text-sm.justify-between
                     .flex.items-center
                       %svg.h-5.w-8{fill: "none", stroke: "currentColor", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
                         %path{d: "M18.2 9.08889C18.2 11.5373 16.3196 13.5222 14 13.5222C11.6804 13.5222 9.79999 11.5373 9.79999 9.08889C9.79999 6.64043 11.6804 4.65556 14 4.65556C16.3196 4.65556 18.2 6.64043 18.2 9.08889Z", fill: "currentColor"}
@@ -26,9 +26,9 @@
                         %path{d: "M8.39999 12.0444C8.39999 13.6768 7.14639 15 5.59999 15C4.05359 15 2.79999 13.6768 2.79999 12.0444C2.79999 10.4121 4.05359 9.08889 5.59999 9.08889C7.14639 9.08889 8.39999 10.4121 8.39999 12.0444Z", fill: "currentColor"}
                         %path{d: "M22.4 26.8222V22.3889C22.4 20.8312 22.0195 19.3671 21.351 18.0949C21.6863 18.0039 22.0378 17.9556 22.4 17.9556C24.7197 17.9556 26.6 19.9404 26.6 22.3889V26.8222H22.4Z", fill: "currentColor"}
                         %path{d: "M6.64896 18.0949C5.98058 19.3671 5.59999 20.8312 5.59999 22.3889V26.8222H1.39999V22.3889C1.39999 19.9404 3.2804 17.9556 5.59999 17.9556C5.96219 17.9556 6.31367 18.0039 6.64896 18.0949Z", fill: "currentColor"}
-                      %span.ml-2.fonst-bold 
+                      %span{class:"ml-2 font-bold"}
                         = "#{group.class_students.count} Students"
-                    .font-bold.text-gray-600
+                    %div{class:"font-bold"}
                       = group.user.fullname
     - if current_user.role == 'teacher'
       = link_to new_group_path, :class => "align-center bg-gray-100 hover:bg-gray-100 focus:ring-my-blue focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" do
