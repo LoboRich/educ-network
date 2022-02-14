@@ -1,7 +1,29 @@
-%h1 Editing assignment_submission
+%div{class: "flex flex-col bg-white w-full text-gray-800 px-8 py-4 gap-4"}
+  %span{class: "text-xl font-gray-800 "} Submit Grade
+  %div{class: "flex flex-row gap-2"}
+  = @assignment_submission.user.first_name
+  = @assignment_submission.user.last_name
 
-= render 'form'
+  = form_for [@group, @assignment, @assignment_submission] do |f|
+    %div{class: "flex flex-row gap-4"}
+      - if @assignment_submission.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@assignment_submission.errors.count, "error")} prohibited this assignment_submission from being saved:"
+          %ul
+            - @assignment_submission.errors.full_messages.each do |msg|
+              %li= msg
+      -# %div{class: "flex flex-col gap-4"}
+      -#   = f.label :body, :class => "text-lg"
+      -#   = f.text_area :body, :class => "rounded border-gray-300 px-4 py-2 w-full"
+      .field
+        = f.label :grade
+        = f.text_field :grade, :class => "rounded 32 border-gray-300 px-4 py-2"
+      %div{class: "flex justify-end"}
+        = f.submit 'Submit', :class => "w-40 bg-my-blue text-base px-8 py-1 text-white rounded cursor-pointer hover:opacity-75 transition-opacity duration-200"
 
-= link_to 'Show', @assignment_submission
-\|
-= link_to 'Back', assignment_submissions_path
+
+-# = render 'form'
+
+-# = link_to 'Show', @assignment_submission
+-# \|
+-# = link_to 'Back', assignment_submissions_path
