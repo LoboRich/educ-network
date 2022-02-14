@@ -1,10 +1,10 @@
 class ActivitiesController < ApplicationController
-  before_action :set_group, only: %i[ show new create ]
+  before_action :set_group, only: %i[ index show new create ]
   before_action :set_activity, only: %i[ show edit update destroy ]
 
   # GET /activities or /activities.json
   def index
-    @activities = Activity.all
+    @activities = @group.activities
   end
 
   # GET /activities/1 or /activities/1.json

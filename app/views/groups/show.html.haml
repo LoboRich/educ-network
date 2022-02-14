@@ -20,17 +20,29 @@
           %span{class: "text-white text-base"} Edit Group
         = link_to @group, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "w-40 hover:text-white flex gap-2 self-center px-8 w-32 py-2 rounded bg-my-pink hover:bg-red hover:opacity-80 flex items-center justify-center transition duration-250" do 
           %span{class: "text-my-blue text-base"} Delete Group
+  -# %ul.flex.border-b.border-light-blue.text-sm.font-medium.text-my-blue.px-4.md:px-0.mt-8.w-auto
+  -#   %li.font-bold.text-my-blue.border-b-2.border-my-pink.bg-my-pink.tablink{onclick: "openTab(event,'Students')"}
+  -#     %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_path(@group)}#_"} Students
+  -#   %li.font-bold.hover:text-my-pink
+  -#     %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_activities_path(@group)}#_"} Activities
+  -#   %li.font-bold.hover:text-my-pink
+  -#     %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_class_students_path(@group)}#_"} Assignments
+  
   %ul.flex.border-b.border-light-blue.text-sm.font-medium.text-my-blue.px-4.md:px-0.mt-8.w-auto
-    %li.font-bold.text-my-blue.border-b-2.border-my-pink.bg-my-pink
-      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_path(@group)}#_"} Students
-    %li.font-bold.hover:text-my-pink
-      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_activities_path(@group)}#_"} Activities
-    %li.font-bold.hover:text-my-pink
-      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_class_students_path(@group)}#_"} Assignments
-  
-  
+    %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Students')"}
+      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue Students
+    %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Assignments')"}
+      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4 Assignments
+    %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Activities')"}
+      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4 Activities
+
   -#= render 'assignments/index'
-  = render 'class_students/index'
+  = render :partial => 'layouts/table_links'
+  .divtab{id: "Students"}
+    = render 'class_students/index'
+  
+  .divtab{id: "Activities", style: "display:none"}
+    = render 'activities/index'
   -#%div{class: "sm:-mx-6.sm:px-6.lg:-mx-8.lg:px-8 w-full -my-2 py-2 overflow-x-auto mt-8"}
   -#  %div{class: "sm:rounded-lg.border-b.border-gray-200 w-full align-middle inline-block min-w-full shadow overflow-hidden"}
   -#    %div{class: "px-6 py-3 border-b border-gray-200 bg-my-blue text-white font-bold text-left text-xs leading-4 font-medium uppercase tracking-wider" }
@@ -105,4 +117,18 @@
 :javascript
   function toggleModal() {
     document.getElementById('modal').classList.toggle('hidden')
+  }
+
+  function openTab(evt, tabName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("divtab");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    //tablinks = document.getElementsByClassName("tablink");
+    //for (i = 0; i < x.length; i++) {
+    //  tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+    //}
+    document.getElementById(tabName).style.display = "block";
+    //evt.currentTarget.className += " w3-red";
   }

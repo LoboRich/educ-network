@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
     @posts = @group.posts.where.not(id: nil).includes(:comments)
     @post = @group.posts.build
     @assignments = @group.posts.where.not(id: nil).includes(:comments)
+    @activities = @group.activities
   end
 
   # GET /groups/new
