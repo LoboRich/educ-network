@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    @groups = GroupsHelper.list(current_user)
   end
 
   # GET /groups/1 or /groups/1.json
@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     @teacher = @group.user 
     @class_student = @group.class_students.build
     @class_students = @group.class_students.where.not(id: nil)
-    @students = User.where(role: 'student').collect{ |u| [u.fullname, u.id]}
+    @students = User.where(role: 'student')
     @posts = @group.posts.where.not(id: nil).includes(:comments)
     @post = @group.posts.build
     @assignments = @group.posts.where.not(id: nil).includes(:comments)

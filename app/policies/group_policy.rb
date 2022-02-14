@@ -23,6 +23,12 @@ class GroupPolicy < ApplicationPolicy
         'teacher'
       ].include?(user.role)
     end
+
+    def actions?
+      [
+        'teacher'
+      ].include?(user.role)
+    end
     
     class Scope
       attr_reader :user, :scope

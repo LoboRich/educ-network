@@ -26,7 +26,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments or /assignments.json
   def create
     @assignment = @group.assignments.build(assignment_params)
-
+    @group.assignments << @assignment
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to group_assignments_path(@assignment), notice: "Assignment was successfully created." }

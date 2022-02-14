@@ -1,0 +1,29 @@
+= form_with scope: :post, url: create2_path do |f|
+  - if @post.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+  .w-full.rounded-lg.mx-auto.flex.overflow-hidden.rounded-b-none.px-8.py-8
+    .w-full
+      .md:flex.items-center
+        .w-full.flex.flex-col.px-2.py-4
+          %label.text-sm.text-gray-600{for: "name"} To Class:
+          = f.hidden_field :user_id, value: current_user.id
+          = f.select :group_id, options_for_select(@groups.collect{ |u| [u.name, u.id]}, :selected => @post.group_id), {}, {class: ' w-full rounded shadow border border-gray-200 text-gray-800 text-base p-2'}
+          
+      .md:flex.items-center
+        .w-full.flex.flex-col.px-2.py-4
+          = f.text_area :content, :class => "border-2 border-gray-200 px-3 py-2 block w-full rounded-lg text-base text-gray-900 focus:outline-none focus:border-indigo-500", :placeholder => "Write something", rows: "3"
+          
+        -# <div class="md:flex items-center">
+        -# <div class="w-full flex flex-col px-2 py-4">
+        -# <label for="photo" class="text-sm text-gray-600 w-full block">Photo</label>
+        -# <img class="rounded-full w-16 h-16 border-4 mt-2 border-gray-200 float-left" id="photo" src="https://pbs.twimg.com/profile_images/1163965029063913472/ItoFLWys_400x400.jpg" alt="photo">
+        -# </div>
+        -# </div>
+      
+  .md:flex-1.px-3.text-center.md:text-right
+    = f.submit 'Post', :class => "bg-my-blue hover:bg-my-light-blue text-white font-bold py-4 px-6 rounded"
+   
