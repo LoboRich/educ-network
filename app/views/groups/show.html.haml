@@ -29,20 +29,25 @@
   -#     %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#{group_class_students_path(@group)}#_"} Assignments
   
   %ul.flex.border-b.border-light-blue.text-sm.font-medium.text-my-blue.px-4.md:px-0.mt-8.w-auto
-    %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Students')"}
-      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue Students
     %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Assignments')"}
-      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4 Assignments
+      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue Assignments
     %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Activities')"}
       %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4 Activities
+    %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Students')"}
+      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4 Students
 
   -#= render 'assignments/index'
   = render :partial => 'layouts/table_links'
-  .divtab{id: "Students"}
+  .divtab{id: "Students", style: "display:none"}
     = render 'class_students/index'
+  
+  .divtab{id: "Assignments"}
+    = render 'assignments/index'  
   
   .divtab{id: "Activities", style: "display:none"}
     = render 'activities/index'
+
+
   -#%div{class: "sm:-mx-6.sm:px-6.lg:-mx-8.lg:px-8 w-full -my-2 py-2 overflow-x-auto mt-8"}
   -#  %div{class: "sm:rounded-lg.border-b.border-gray-200 w-full align-middle inline-block min-w-full shadow overflow-hidden"}
   -#    %div{class: "px-6 py-3 border-b border-gray-200 bg-my-blue text-white font-bold text-left text-xs leading-4 font-medium uppercase tracking-wider" }
