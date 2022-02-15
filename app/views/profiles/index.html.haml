@@ -1,90 +1,38 @@
-= render :partial => 'layouts/table_links'
 .container.mx-auto.w-full.mt-8.py-10.min-w-full.sm:px-6.lg:px-8.bg-white.rounded
-  %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0 Sample Table
-  %ul.flex.border-b.border-my-blue.text-sm.font-medium.text-my-blue.mt-10.px-6.md:px-0
-    %li.font-bold.mr-8.text-my-blue.border-b-2.border-my-pink.bg-my-pink
-      %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4{href: "#_"} Students
-    %li.font-bold.mr-8.hover:text-my-pink
-      %a.py-4.inline-block.bold{href: "#_"} Activities
-    %li.font-bold.mr-8.hover:text-my-pink
-      %a.py-4.inline-block.bold{href: "#_"} Assignments
-  .w-full.mt-10
-    %table#example.stripe.hover.w-full.mt-10.py-8
-      %thead.bg-my-light-blue.dark:bg-white
-        %tr
-          %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"}
-            Name
-          %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"}
-            Color
-          %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"}
-            Category
-          %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"}
-            Price
-          %th.relative.py-3.px-6{scope: "col"}
-            %span.sr-only Edit
-      %tbody
-        %tr.border-b.odd:bg-white.even:bg-gray-50.odd:dark:bg-gray-800.even:dark:bg-gray-700.dark:border-gray-600
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            Apple Imac 27
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            White
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            Desktop Pc
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            $1999
-          %td.py-4.px-6.text-sm.font-medium.text-right.whitespace-nowrap
-            %a.text-blue-600.dark:text-my-black.hover:underline{href: "#"} Edit
-        %tr.border-b.odd:bg-white.even:bg-gray-50.odd:dark:bg-gray-800.even:dark:bg-gray-700.dark:border-gray-600
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            Apple Imac 27
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            White
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            Desktop Pc
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            $1999
-          %td.py-4.px-6.text-sm.font-medium.text-right.whitespace-nowrap
-            %a.text-blue-600.dark:text-my-black.hover:underline{href: "#"} Edit
-.container.mx-auto.w-full.mt-8.py-10.min-w-full.sm:px-6.lg:px-8.bg-white.rounded
-  %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0 Sample form
+  %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0 Profile
   %form{action: "{{ route('profile.save') }}", enctype: "multipart/form-data", method: "POST"}
     .w-full.bg-white.rounded-lg.mx-auto.mt-16.flex.overflow-hidden.rounded-b-none
       .w-full
+        .md:flex.items-center.mb-8
+          .mx-auto.w-40.h-40.mb-2.border.rounded-full.relative.bg-gray-100.mb-4.shadow-inset
+            %img.img-size.object-cover.w-40.h-40.rounded-full{:alt => "NO PICTURE UPLOADED", :src => "#{@user.img.present? ? @user.img.to_s : '/pic.png'}"}/
+        .md:flex.items-center
+          .w-full.flex.flex-col.px-2{class: "md:w-1/3"}
+            %label.text-sm.text-gray-600{for: "first name"}
+              
+            %input.mt-2.border-2.border-gray-200.px-3.py-2.block.w-full.rounded-lg.text-base.text-gray-900.focus:outline-none.focus:border-indigo-500{type: "text", value: "#{@user.first_name}"}/
+          .w-full.flex.flex-col.px-2{class: "md:w-1/3"}
+            %label.text-sm.text-gray-600{for: "middle name"}
+              
+            %input.mt-2.border-2.border-gray-200.px-3.py-2.block.w-full.rounded-lg.text-base.text-gray-900.focus:outline-none.focus:border-indigo-500{type: "text", value: "#{@user.middle_name}"}/
+          .w-full.flex.flex-col.px-2{class: "md:w-1/3"}
+            %label.text-sm.text-gray-600{for: "last name"}
+              
+            %input.mt-2.border-2.border-gray-200.px-3.py-2.block.w-full.rounded-lg.text-base.text-gray-900.focus:outline-none.focus:border-indigo-500{type: "text", value: "#{@user.last_name}"}/
         .md:flex.items-center
           .w-full.flex.flex-col.px-2{class: "md:w-1/2"}
-            %label.text-sm.text-gray-600{for: "name"} Name
-            %input.mt-2.border-2.border-gray-200.px-3.py-2.block.w-full.rounded-lg.text-base.text-gray-900.focus:outline-none.focus:border-indigo-500{name: "name", type: "text", value: ""}/
+            %label.text-sm.text-gray-600{for: "name"} Role
+            %input.mt-2.border-2.border-gray-200.px-3.py-2.block.w-full.rounded-lg.text-base.text-gray-900.focus:outline-none.focus:border-indigo-500{type: "text", value: "#{@user.role}"}/
           .w-full.flex.flex-col.px-2{class: "md:w-1/2"}
             %label.text-sm.text-gray-600{for: "email"} Email Address
-            %input.mt-2.border-2.border-gray-200.px-3.py-2.block.w-full.rounded-lg.text-base.text-gray-900.focus:outline-none.focus:border-indigo-500{name: "email", type: "email", value: ""}/
-        .md:flex.items-center
-          .w-full.flex.flex-col.px-2.py-4
-            %label.text-sm.text-gray-600{for: "message"} Message
-            %textarea#exampleFormControlTextarea1.mt-2.border-2.border-gray-200.px-3.py-2.block.w-full.rounded-lg.text-base.text-gray-900.focus:outline-none.focus:border-indigo-500{placeholder: "Your message", rows: "3"}
-        
+            %input.mt-2.border-2.border-gray-200.px-3.py-2.block.w-full.rounded-lg.text-base.text-gray-900.focus:outline-none.focus:border-indigo-500{type: "email", value: "#{@user.email}"}/
+          
+      
           -# <div class="md:flex items-center">
-          -# <div class="w-full flex flex-col px-2 py-4">
+          -#<div class="w-full flex flex-col px-2 py-4">
           -# <label for="photo" class="text-sm text-gray-600 w-full block">Photo</label>
           -# <img class="rounded-full w-16 h-16 border-4 mt-2 border-gray-200 float-left" id="photo" src="https://pbs.twimg.com/profile_images/1163965029063913472/ItoFLWys_400x400.jpg" alt="photo">
           -# </div>
           -# </div>
-        .md:flex.items-center
-          .w-full.flex.flex-col.px-2.py-4
-            %label.inline-block.mb-2.text-gray-500 Upload Image(jpg,png,svg,jpeg)
-            .flex.items-center.justify-center.w-full
-              %label.flex.flex-col.w-full.h-32.border-4.border-dashed.hover:bg-gray-100.hover:border-gray-300
-                .flex.flex-col.items-center.justify-center.pt-7
-                  %svg.w-12.h-12.text-gray-400.group-hover:text-gray-600{fill: "currentColor", viewbox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg"}
-                    %path{"clip-rule" => "evenodd", d: "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z", "fill-rule" => "evenodd"}
-                  %p.pt-1.text-sm.tracking-wider.text-gray-400.group-hover:text-gray-600 Select a photo
-                %input.opacity-0{type: "file"}/
-        
     .md:flex-1.px-3.text-center.md:text-right.mt-16
-      %button.bg-my-silver.hover:bg-blue-700.text-white.font-bold.py-2.px-4.rounded Cancel
-      %input.bg-my-blue.hover:bg-my-light-blue.text-white.font-bold.py-2.px-4.rounded{type: "submit", value: "Create"}/
-:javascript
-  var table = $('#example').DataTable( {
-    responsive: true
-  } )
-  .columns.adjust()
-  .responsive.recalc();
+      = link_to 'Edit Account', edit_user_registration_path, class: 'bg-my-blue hover:bg-my-light-blue text-white font-bold py-2 px-4 rounded', style: "color: white"
