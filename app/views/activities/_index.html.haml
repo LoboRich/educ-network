@@ -1,83 +1,10 @@
-
-.flex.flex-col.md:flex-row.items-center.justify-between.w-full.mt-8
-  %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0 Activities
-  -# = link_to new_group_assignment_path(@group), :class => "text-white flex self-center px-8 py-2 rounded bg-my-blue hover:bg-my-blue hover:opacity-80 flex items-center justify-center transition duration-250" do 
-  -#   %span{class: "text-white text-base"} Create Group
-  -# %button.py-2.px-4.bg-blue-500.text-white.rounded.hover:bg-blue-700(onclick="toggleModal()") Add Student
-  -# #modal.fixed.z-10.overflow-y-auto.top-0.w-full.left-0.hidden
-  -#   .flex.items-center.justify-center.min-height-100vh.pt-4.px-4.pb-20.text-center.sm:block.sm:p-0
-  -#     .fixed.inset-0.transition-opacity
-  -#       .absolute.inset-0.bg-gray-900.opacity-75
-  -#     %span.hidden.sm:inline-block.sm:align-middle.sm:h-screen ​
-  -#     .inline-block.align-center.bg-white.rounded-lg.text-left.overflow-hidden.shadow-xl.transform.transition-all.sm:my-8.sm:align-middle.sm:max-w-lg.sm:w-full(aria-labelledby="modal-headline" aria-modal="true" role="dialog")
-  -#       .bg-white.px-4.pt-5.pb-4.sm:p-6.sm:pb-4
-  -#         -#= render 'class_students/form'
-  -#         %form.w-full.max-w-sm
-  -#           .flex.items-center.border-b.border-teal-500.py-2
-  -#             %input.appearance-none.bg-transparent.border-none.w-full.text-gray-700.mr-3.py-1.px-2.leading-tight.focus:outline-none(aria-label="Full name" placeholder="Jane Doe" type="text")/
-  -#             %button.flex-shrink-0.bg-teal-500.hover:bg-teal-700.border-teal-500.hover:border-teal-700.text-sm.border-4.text-white.py-1.px-2.rounded(type="button")
-  -#               Sign Up
-  -#             %button.flex-shrink-0.border-transparent.border-4.text-teal-500.hover:text-teal-800.text-sm.py-1.px-2.rounded(type="button")
-  -#               Cancel
-  -#       .bg-gray-200.px-4.py-3.text-right
-  -#         %button.py-2.px-4.bg-gray-500.text-white.rounded.hover:bg-gray-700.mr-2(onclick="toggleModal()" type="button")
-  -#           %i.fas.fa-times
-  -#           Cancel
-  -#         %button.py-2.px-4.bg-blue-500.text-white.rounded.hover:bg-blue-700.mr-2(type="button")
-  -#           %i.fas.fa-plus
-  -#           Create
-.w-full.mt-10
-  %table#activities.min-w-full.divide-y.divide-gray-200.py-8
-    %thead.bg-my-light-blue.dark:bg-white
-      %tr
-        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Title
-        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Type
-        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Instructions
-        %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Action
-
-    %tbody{class: "bg-white"}
-      - @activities.each do |activity|
-        %tr
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            = activity.title
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            = activity.kind
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            = activity.instructions
-          %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-            = link_to 'Show', group_activity_path(@group, activity)
-          -# -# Insert View Assignment Code
-          -# %td.px-6.py-4.whitespace-no-wrap.border-b.border-gray-200.text-sm.leading-5.text-gray-500.flex.gap-4
-          -#   =link_to "View / Submit", group_assignment_path(@group, assignment) 
-
-
-:javascript
-  var table = $('#activities').DataTable( {
-    responsive: true
-  } )
-  .columns.adjust()
-  .responsive.recalc();
-
--#   %h1 Listing activities
-
--# %table
--#   %thead
--#     %tr
--#       %th Title
--#       %th Instructions
--#       %th
--#       %th
--#       %th
-
--#   %tbody
--#     - @activities.each do |activity|
--#       %tr
--#         %td= activity.title
--#         %td= activity.instructions
--#         %td= link_to 'Show', group_activity_path(@group, activity)
--#         %td= link_to 'Edit', edit_group_activity_path(@group, activity)
--#         -# %td= link_to 'Destroy', activity, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
--# %br
-
--# = link_to 'New Activity', new_group_activity_path(@group)
+.flex.flex-wrap.gap-2.py-6
+  - @activities.each do |activity|
+    .p-6.max-w-sm.bg-white.rounded-lg.border.border-gray-200.shadow-md.dark:bg-gray-800.dark:border-gray-700.flex.flex-col.justify-between
+      %div
+        %h5.mb-2.text-2xl.font-bold.tracking-tight.text-gray-900.dark:text-white
+          = activity.title
+        %p.mb-3.font-normal.text-gray-700.dark:text-gray-400
+          = activity.instructions
+      %div
+        = link_to "Take Quiz", group_activity_path(@group, activity), :class => "py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 visited:text-white"

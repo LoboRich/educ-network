@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_123100) do
+ActiveRecord::Schema.define(version: 2022_02_14_124941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -49,6 +49,26 @@ ActiveRecord::Schema.define(version: 2022_02_07_123100) do
     t.index ["group_id"], name: "index_activities_on_group_id"
   end
 
+  create_table "activity_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_activity_submissions_on_activity_id"
+    t.index ["user_id"], name: "index_activity_submissions_on_user_id"
+  end
+
+  create_table "answers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.boolean "answer"
+    t.integer "grading"
+    t.uuid "activity_submission_id", null: false
+    t.uuid "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_submission_id"], name: "index_answers_on_activity_submission_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
   create_table "assignment_submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "assignment_id", null: false
     t.uuid "user_id", null: false
@@ -56,6 +76,7 @@ ActiveRecord::Schema.define(version: 2022_02_07_123100) do
     t.float "grade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "myfile"
     t.index ["assignment_id"], name: "index_assignment_submissions_on_assignment_id"
     t.index ["user_id"], name: "index_assignment_submissions_on_user_id"
   end
@@ -138,6 +159,10 @@ ActiveRecord::Schema.define(version: 2022_02_07_123100) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "groups"
+  add_foreign_key "activity_submissions", "activities"
+  add_foreign_key "activity_submissions", "users"
+  add_foreign_key "answers", "activity_submissions"
+  add_foreign_key "answers", "questions"
   add_foreign_key "assignment_submissions", "assignments"
   add_foreign_key "assignment_submissions", "users"
   add_foreign_key "assignments", "groups"
