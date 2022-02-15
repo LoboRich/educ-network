@@ -10,6 +10,8 @@ class ActivitySubmissionsController < ApplicationController
 
   # GET /activity_submissions/1 or /activity_submissions/1.json
   def show
+    @questions = @activity.questions
+    @answers = ActivitySubmission.where(user_id: current_user.id).first.answers
   end
 
   # GET /activity_submissions/new
