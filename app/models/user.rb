@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :class_students
 
   has_many :activities
+  has_many :activity_submissions
   belongs_to :class_student, optional: true
   has_many :posts
   enum roles: { admin: "admin", teacher: "teacher", student: "student", guardian: "guardian"}

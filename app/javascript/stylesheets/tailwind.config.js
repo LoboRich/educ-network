@@ -1004,6 +1004,7 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "visited"
     ],
     textDecoration: [
       "responsive",

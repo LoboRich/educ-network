@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :activity_submissions
   get 'activity/index'
 
   devise_for :users 
@@ -11,7 +10,9 @@ Rails.application.routes.draw do
     resources :assignments do
       resources :assignment_submissions 
     end
-    resources :activities
+    resources :activities do
+      resources :activity_submissions
+    end
   end
 
   get '/profile', to: 'profiles#index'
