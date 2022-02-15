@@ -25,9 +25,8 @@
     <div x-data="{ dropdownOpen: false }" class="relative">
       <button @click="dropdownOpen = ! dropdownOpen"
           class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
-          <img class="h-full w-full object-cover"
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-              alt="Your avatar">
+          <img class="h-full w-full object-cover" src="#{current_user.img.present? ? current_user.img.to_s : 'pic.png'}" alt="Your avatar">
+          
       </button>
 
       <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
