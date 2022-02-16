@@ -27,7 +27,7 @@
                         %path{d: "M22.4 26.8222V22.3889C22.4 20.8312 22.0195 19.3671 21.351 18.0949C21.6863 18.0039 22.0378 17.9556 22.4 17.9556C24.7197 17.9556 26.6 19.9404 26.6 22.3889V26.8222H22.4Z", fill: "currentColor"}
                         %path{d: "M6.64896 18.0949C5.98058 19.3671 5.59999 20.8312 5.59999 22.3889V26.8222H1.39999V22.3889C1.39999 19.9404 3.2804 17.9556 5.59999 17.9556C5.96219 17.9556 6.31367 18.0039 6.64896 18.0949Z", fill: "currentColor"}
                       %span{class:"ml-2 font-bold"}
-                        = "#{group.class_students.count} Students"
+                        = "#{pluralize(group.class_students.count, 'student')}"
                     %div{class:"font-bold"}
                       = group.user.fullname
     - if current_user.role == 'teacher'
