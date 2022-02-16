@@ -22,26 +22,6 @@
         Sign out
       </a>
     </div>
-    <div x-data="{ dropdownOpen: false }" class="relative">
-      <button @click="dropdownOpen = ! dropdownOpen"
-          class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
-          <img class="h-full w-full object-cover" src="#{current_user.img.present? ? current_user.img.to_s : 'pic.png'}" alt="Your avatar">
-          
-      </button>
-
-      <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
-          style="display: none;"></div>
-
-      <div x-show="dropdownOpen"
-          class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
-          style="display: none;">
-          <a href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
-          
-          <a href="/login"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
-      </div>
-    </div>
   </div>
 </nav>
 
