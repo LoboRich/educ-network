@@ -14,7 +14,7 @@ The pandemic has exposed the faulty education system that we currently have. Wit
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/86831395/154256620-e575e9f4-ad27-40c9-884d-8adb6eaa2be2.png">
 
-###Create Posts as a Teacher/Student
+### Create Posts as a Teacher/Student
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/86831395/154256811-5f8a0e29-042b-45f3-aa9b-82cc46140ec2.png">
 
