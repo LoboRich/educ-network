@@ -14,6 +14,7 @@ class ActivitiesController < ApplicationController
     @points = @questions.sum(:grading)
     @submission = @activity.activity_submissions.where(user_id: current_user.id).first
     @score = @submission != nil ? @submission.answers.sum(:grading) : 0
+    @students = @group.class_students
   end
 
   # GET /activities/new
