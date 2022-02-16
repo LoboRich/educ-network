@@ -4,5 +4,6 @@ class Activity < ApplicationRecord
   accepts_nested_attributes_for :questions
   has_many :activity_submissions
 
-  validates :title, presence: true
+  validates_presence_of :title
+  validates_presence_of :instructions
 end
