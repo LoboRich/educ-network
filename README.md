@@ -60,7 +60,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/idlehands08/educ-network.git
+   git clone https://github.com/LoboRich/educ-network.git
    ```
 2. Go to your folder and install all the bundles
    ```js
