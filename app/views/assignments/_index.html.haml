@@ -1,7 +1,8 @@
 %div{class:"flex flex-col md:flex-row items-center justify-between w-full mt-10"}
   %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0 Assignments
-  = link_to new_group_assignment_path(@group), :class => "text-white flex self-center px-8 py-2 rounded bg-my-blue hover:bg-my-blue hover:opacity-80 flex items-center justify-center transition duration-250" do 
-    %span{class: "text-white text-base"} Create Assignment 
+  - if current_user.role == 'teacher'
+    = link_to new_group_assignment_path(@group), :class => "text-white flex self-center px-8 py-2 rounded bg-my-blue hover:bg-my-blue hover:opacity-80 flex items-center justify-center transition duration-250" do 
+      %span{class: "text-white text-base"} Create Assignment 
   
 .w-full.mt-10
   %table#assignments.stripe.hover.w-full.mt-10.py-8

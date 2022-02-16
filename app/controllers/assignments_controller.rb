@@ -16,11 +16,13 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
+    authorize Assignment, :new?
     @assignment = @group.assignments.build
   end
 
   # GET /assignments/1/edit
   def edit
+    authorize Assignment, :edit?
   end
 
   # POST /assignments or /assignments.json
