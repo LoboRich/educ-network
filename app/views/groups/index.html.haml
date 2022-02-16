@@ -13,7 +13,7 @@
           .component.flex.max-w-sm.mt-8   
             %div{class: "flex flex-col md:flex-row items-center justify-between w-full "}
               .w-full.shadow-lg.rounded-lg.bg-gray-100.relative
-                .w-full.h-48.bg-cover.rounded-t-lg{style: "background-image: url(#{group.img.to_s});"}
+                .w-full.h-48.bg-cover.rounded-t-lg{style: "background-image: url(#{group.img.present? ? group.img.to_s : '/no_img.jpg'});"}
                 .p-6.py-8
                   .text-lg.font-bold
                     = group.name
