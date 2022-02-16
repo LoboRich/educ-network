@@ -1,6 +1,6 @@
 <div align="center">
 
-<h3 align="center">Teachbook Learning Management App</h3>
+<h1 align="center">Teachbook Learning Management App</h1>
 
   <p align="center">
     Teachbook is a Ruby on Rails Application that serves as an avenue for teachers and students to conduct academic activities online.
