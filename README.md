@@ -17,16 +17,17 @@ The pandemic has exposed the faulty education system that we currently have. Wit
 
 ## Features
 
-- Teacher can:
+#### Teacher can:
   - create a class
-   - add students to class 
+  - add students to class 
   - create an activity
-   - view submitted activities 
+  - view submitted activities 
   - create an assignment
-   - view and grade submitted assignments
+  - view and grade submitted assignments
   - post to a class
-   - comment to a post
-- Student can:
+  - comment to a post
+  -
+#### Student can:
   - be added to a class
   - answer an activity
   - submit an assignment
@@ -46,12 +47,45 @@ The pandemic has exposed the faulty education system that we currently have. Wit
 <img width="540" alt="image" src="https://user-images.githubusercontent.com/86831395/154256968-6f089e15-0bb1-446c-97f2-df9a48ca110e.png">
 <img width="540" alt="image" src="https://user-images.githubusercontent.com/86831395/154257005-7e53119b-7ed7-4ce3-93c3-6dea01b157db.png">
 
+## Getting Started
 
-## Backlogs
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- Must have Ruby on Rails installed on your system in order to edit the app
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/idlehands08/stock-trading-app.git
+   ```
+2. Go to your folder and install all the bundles
+   ```js
+   cd stock-trading-app
+   bundle install
+   ```
+3. Installing yarn
+   ```js
+   yarn install --check files
+   ```
+4. Migration
+   ```js
+   rails db:migrate
+   rails db:seed
+   ```
+5. Start the server
+   ```js
+   rails server
+   ```
+
+## Roadmap
 
 - [ ] Include Parents
-- [ ] More question types in exams
-- [ ] Can submit PDF files
+- [ ] Additional question types in exams
+- [ ] Support more file extensions when uploading assignment
+- [ ] Improve visual design
 
 
 
