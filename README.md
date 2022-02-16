@@ -26,12 +26,13 @@ The pandemic has exposed the faulty education system that we currently have. Wit
   - view and grade submitted assignments
   - post to a class
   - comment to a post
-  -
 #### Student can:
   - be added to a class
   - answer an activity
   - submit an assignment
-  - view activity and assignmentscores
+  - view activity and assignment scores
+  - post to a class
+  - comment to a post
 
 ### Create Classes as a Teacher
 
