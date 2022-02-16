@@ -59,11 +59,11 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/idlehands08/stock-trading-app.git
+   git clone https://github.com/idlehands08/educ-network.git
    ```
 2. Go to your folder and install all the bundles
    ```js
-   cd stock-trading-app
+   cd educ-network
    bundle install
    ```
 3. Installing yarn
