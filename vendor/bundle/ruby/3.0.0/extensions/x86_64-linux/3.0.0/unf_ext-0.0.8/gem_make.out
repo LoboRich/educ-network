@@ -1,0 +1,16 @@
+current directory: /home/loborich/rails-avion/rails-app/educ-network/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+/home/loborich/.rvm/rubies/ruby-3.0.2/bin/ruby -I /home/loborich/.rvm/rubies/ruby-3.0.2/lib/ruby/3.0.0 -r ./siteconf20220216-23006-50drg1.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /home/loborich/rails-avion/rails-app/educ-network/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\= clean
+
+current directory: /home/loborich/rails-avion/rails-app/educ-network/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\=
+compiling unf.cc
+linking shared-object unf_ext.so
+
+current directory: /home/loborich/rails-avion/rails-app/educ-network/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20220216-23006-o3guq4
