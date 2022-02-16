@@ -13,7 +13,7 @@
 
 ## The Problem
 
-The pandemic has exposed the faulty education system that we currently have. Without face-to-face classes, both teachers and students are having a hard time communicating with each other, thus compromising the quality of education. The most affected are the students and teachers in pre-school to grade school level. Unlike college students, those who are under the basic education level do not have proper venue for learning.
+The pandemic has exposed the faulty education system that we currently have. Without face-to-face classes, both teachers and students are having a hard time in following the curriculum, thus compromising the quality of education. The most affected are the students and teachers in pre-school to grade school level, where learning is crucial because kids are in their formative years. Unlike college students, those who are under the basic education level do not have proper and accessible online venue for academics.
 
 ## Features
 
@@ -88,5 +88,14 @@ To get a local copy up and running follow these simple example steps.
 - [ ] Support more file extensions when uploading assignment
 - [ ] Improve visual design
 
+## Contact
+
+[JM Arenas](https://www.facebook.com/jeiem0014)  - rns.jey@gmail.com 
+
+[Kimcarl Cacas](https://www.facebook.com/xx.kbc) - kimcarl.basallaje.cacas@gmail.com
+
+[Geoff Dagamac](https://www.facebook.com/geoffreydagamac) - geoffreydagamac@gmail.com
+
+[Richelle Lobo](https://www.facebook.com/richelle.lobo) - lobo.r0018@gmail.com
 
 
