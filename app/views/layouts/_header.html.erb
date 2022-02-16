@@ -9,25 +9,24 @@
 
   <div class="hidden w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="menu">
     <div class="text-sm lg:flex-grow font-bold">
-      <a href="/feed#_" class="block mt-4 lg:inline-block lg:mt-0 text-white visited:text-white mr-4">
+      <a href="/feed#_" class="block mt-4 lg:inline-block lg:mt-0 text-white visited:text-white mr-4", style="color: white">
         Stories
       </a>
-      <a href="/groups#_" class="block mt-4 lg:inline-block lg:mt-0 text-white visited:text-white mr-4">
+      <a href="/groups#_" class="block mt-4 lg:inline-block lg:mt-0 text-white visited:text-white mr-4", style="color: white">
         Classes
       </a>
-      <a href="/profile#_" class="block mt-4 lg:inline-block lg:mt-0 text-white visited:text-white mr-4">
+      <a href="/profile#_" class="block mt-4 lg:inline-block lg:mt-0 text-white visited:text-white mr-4", style="color: white">
         Profile
       </a>
-      <a href="/sign_out#_" class="block mt-4 lg:inline-block lg:mt-0 text-white visited:text-white mr-4">
+      <a href="/sign_out#_" class="block mt-4 lg:inline-block lg:mt-0 text-white visited:text-white mr-4", style="color: white">
         Sign out
       </a>
     </div>
     <div x-data="{ dropdownOpen: false }" class="relative">
       <button @click="dropdownOpen = ! dropdownOpen"
           class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
-          <img class="h-full w-full object-cover"
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-              alt="Your avatar">
+          <img class="h-full w-full object-cover" src="#{current_user.img.present? ? current_user.img.to_s : 'pic.png'}" alt="Your avatar">
+          
       </button>
 
       <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"

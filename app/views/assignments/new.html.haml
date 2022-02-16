@@ -1,5 +1,6 @@
-%h1 New assignment
+%span{class: "text-3xl text-my-blue font-bold"} Create Assignment
 
 = render 'form'
 
-= link_to 'Back', group_assignments_path(@group)
+%div{class:"bg-white p-8"}
+  = link_to 'Back Group', group_path(@group), :class => "w-40 flex self-center px-8 py-2 rounded bg-my-blue hover:bg-my-blue hover:bg-my-blue hover:opacity-80 flex items-center justify-center transition duration-250", :style => "color: white"
