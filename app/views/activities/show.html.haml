@@ -55,10 +55,37 @@
           
     
     %ul.flex.border-b.border-light-blue.text-sm.font-medium.text-my-blue.px-4.md:px-0.mt-8.w-auto
-      -# %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Overview')"}
-      -#   %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue Overview
-      %li.font-bold.hover:text-my-pink.cursor-pointer.tablink{onclick: "openTab(event,'Students')"}
+      %li.font-bold.hover:text-my-pink.cursor-pointer.tablink
         %a.py-4.inline-block.bold.hover:bg-my-pink.hover:text-my-blue.p-4 Students
+
+    = render :partial => 'layouts/table_links'
+    .divtab
+      .flex.flex-col.md:flex-row.items-center.justify-between.w-full.mt-8
+        %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0 Students
+      .w-full.mt-10
+        %table#students.min-w-full.divide-y.divide-gray-200.py-8
+          %thead.bg-my-light-blue.dark:bg-white
+            %tr
+              %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Name
+              %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Status
+              %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Time Submitted
+              %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Score
+              %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"}
+
+          %tbody{class: "bg-white"}
+            - @students.each do |student|
+              %tr
+                %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+                  = student.user.fullname
+                %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+                  = student.my_submission(@activity).length == 0 ? "Not Viewed" : "Graded"
+                %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+                  = student.my_submission(@activity).length == 0 ? "" : student.my_submission(@activity).first.created_at
+                %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+                  = student.my_submission(@activity).length == 0 ? "" : student.my_score(@activity)
+                %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
+                  - unless student.my_submission(@activity).length == 0
+                    = link_to "View", group_activity_activity_submission_path(@group, @activity, student.my_submission(@activity).first)
 
     -# .divtab{id: "Overview"}
     -#   .overview
@@ -120,34 +147,6 @@
     
     -# .divtab{id: "Assignments"}
     -#   = render 'assignments/index'  
-    
-    .divtab{id: "Students"}
-      .flex.flex-col.md:flex-row.items-center.justify-between.w-full.mt-8
-      %h1.text-2xl.font-bold.text-my-blue.px-6.md:px-0 Students
-    .w-full.mt-10
-      %table#students.min-w-full.divide-y.divide-gray-200.py-8
-        %thead.bg-my-light-blue.dark:bg-white
-          %tr
-            %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Name
-            %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Status
-            %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Time Submitted
-            %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"} Score
-            %th.py-3.px-6.text-xs.font-medium.tracking-wider.text-left.text-gray-700.uppercase.dark:text-gray-400{scope: "col"}
-
-        %tbody{class: "bg-white"}
-          - @students.each do |student|
-            %tr
-              %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-                = student.user.fullname
-              %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-                = student.my_submission(@activity).length == 0 ? "Not Viewed" : "Graded"
-              %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-                = student.my_submission(@activity).length == 0 ? "" : student.my_submission(@activity).first.created_at
-              %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-                = student.my_submission(@activity).length == 0 ? "" : student.my_score(@activity)
-              %td.py-4.px-6.text-sm.font-medium.text-gray-700.whitespace-nowrap.dark:text-white
-                - unless student.my_submission(@activity).length == 0
-                  = link_to "View", group_activity_activity_submission_path(@group, @activity, student.my_submission(@activity).first)
 
 
 :javascript
@@ -157,22 +156,6 @@
   .columns.adjust()
   .responsive.recalc();
 
-
-:javascript
   function toggleModal() {
     document.getElementById('modal').classList.toggle('hidden')
-  }
-
-  function openTab(evt, tabName) {
-    var i, x, tablinks;
-    x = document.getElementsByClassName("divtab");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-    //tablinks = document.getElementsByClassName("tablink");
-    //for (i = 0; i < x.length; i++) {
-    //  tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-    //}
-    document.getElementById(tabName).style.display = "block";
-    //evt.currentTarget.className += " w3-red";
   }
