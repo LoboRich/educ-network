@@ -23,15 +23,14 @@ class ClassStudentsController < ApplicationController
   # POST /class_students or /class_students.json
   def create
     @class_student = @group.class_students.build(class_student_params)
-		@group.class_students << @class_student
-    UserMailer.with(student: @class_student.user, group: @group).added_to_group.deliver_now
+    
     respond_to do |format|
       if @class_student.save
+        UserMailer.with(student: @class_student.user, group: @group).added_to_group.deliver_now
         format.html { redirect_to @group, notice: "Class student was successfully added." }
         format.json { render :show, status: :created, location: @class_student }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @class_student.errors, status: :unprocessable_entity }
+        format.html { redirect_to @group, notice: "Student was already added to this class." }
       end
     end
   end
