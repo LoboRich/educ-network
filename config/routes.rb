@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'activity/index'
 
-  devise_for :users 
   resources :groups do
     resources :class_students
     resources :posts do
@@ -27,7 +26,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
   root :to => "profiles#feed"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'classpage', to: 'html_pages#classpage'
