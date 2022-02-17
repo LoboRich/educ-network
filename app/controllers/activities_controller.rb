@@ -33,6 +33,8 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
+        @post = @group.posts.new(content: "Created a new activity " + @activity.title, user_id: current_user.id)
+        @post.save
         format.html { redirect_to group_path(@group), notice: "#{@activity.title} was successfully created." }
         format.json { render :show, status: :created, location: @activity }
       else

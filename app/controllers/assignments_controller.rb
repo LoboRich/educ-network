@@ -31,6 +31,8 @@ class AssignmentsController < ApplicationController
     
     respond_to do |format|
       if @assignment.save
+        @post = @group.posts.new(content: "Created a new assignment " + @assignment.title, user_id: current_user.id)
+        @post.save
         format.html { redirect_to group_assignment_path(@group, @assignment), notice: "Assignment was successfully created." }
         format.json { render :show, status: :created, location: @assignment }
       else
