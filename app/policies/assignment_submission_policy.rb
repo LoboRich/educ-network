@@ -1,4 +1,4 @@
-class AssignmentPolicy < ApplicationPolicy
+class AssignmentSubmissionPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
