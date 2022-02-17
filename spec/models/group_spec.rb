@@ -10,13 +10,18 @@ RSpec.describe Group, :type => :model do
     expect(group).to be_valid
   end
 
+  it "is not valid without user id" do
+    group = Group.new(name: "Test", description: "Hello World")
+    expect(group).to_not be_valid
+  end
+
   it "is not valid without a name" do
-    group = Group.new(name: nil, description: "Hello World")
+    group = Group.new(user_id: user.id, name: nil, description: "Hello World")
     expect(group).to_not be_valid
   end
 
   it "is not valid without a description"do
-    group = Group.new(name: "Class Masipag")
+    group = Group.new(user_id: user.id, name: "Class Masipag")
     expect(group).to_not be_valid
   end
   
