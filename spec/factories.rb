@@ -6,6 +6,7 @@ FactoryBot.define do
     middle_name { 'Smith' }
     last_name { 'Doe' }
     password { 'password1234' }
+    role { 'teacher' }
   end
 
   factory :group do
