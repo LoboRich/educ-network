@@ -15,7 +15,7 @@
                 %p
                   to
                 %h3{class: "text-base text-gray-900 font-semibold"}
-                  = post.group.name
+                  = link_to post.group.name, post.group 
               %div{class: "text-sm text-gray-500 lowercase"}
                 = time_ago_in_words(post.created_at)
                 ago 
