@@ -1,6 +1,6 @@
 - if current_user.role == 'teacher'
   .w-full.max-w-sm
-    = form_with(model: [@group, @class_student], local: true) do |f|
+    = form_with(model: [@group, @class_student], remote: true) do |f|
       - if @class_student.errors.any?
         #error_explanation
           %h2= "#{pluralize(@class_student.errors.count, "error")} prohibited this class_student from being saved:"
