@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     @teacher = @group.user 
     @class_student = @group.class_students.build
     @class_students = @group.class_students.where.not(id: nil)
-    @students = User.where(role: 'student').map{|x| x if !@class_students.pluck(:user_id).include?(x.id)}.compact    
+    @students = User.all
     @posts = @group.posts.where.not(id: nil).includes(:comments)
     @post = @group.posts.build
     @assignments = @group.assignments

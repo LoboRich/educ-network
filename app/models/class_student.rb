@@ -1,6 +1,9 @@
 class ClassStudent < ApplicationRecord
+
     belongs_to :group
     belongs_to :user
+    validates :user_id, uniqueness: { scope: :group_id, message: "Student already exists for this class." }
+
     enum statuses: {
 		'Pending': 'Pending',
 		'Joined': 'Joined'

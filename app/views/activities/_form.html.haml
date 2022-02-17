@@ -1,38 +1,54 @@
-= form_with model: [ @group, @activity ] do |f|
-  - if @activity.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@activity.errors.count, "error")} prohibited this activity from being saved:"
-      %ul
-        - @activity.errors.full_messages.each do |msg|
-          %li= msg
+%div{ :class => "mt-10 sm:mt-0" }
+  %div{ :class => "flex justify-center" }
+    %div{ :class => "mt-5 md:mt-0 md:col-span-2", :style => "min-width: 500px" }
+      = form_with model: [ @group, @activity ] do |f|
+        - if @activity.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@activity.errors.count, "error")} prohibited this activity from being saved:"
+            %ul
+              - @activity.errors.full_messages.each do |msg|
+                %li= msg
+        
+        %div{ :class => "py-1"}
+          = f.label :title, :class => "block text-sm font-medium text-gray-700"
+          .mt-1.relative.rounded-md.shadow-sm
+            = f.text_field :title, :class => "focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+        
+        %div{ :class => "py-1"}
+          = f.label :instructions, :class => "block text-sm font-medium text-gray-700"
+          .mt-1.relative.rounded-md.shadow-sm
+            = f.text_area :instructions, :class => "focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-3 sm:text-sm border-gray-300 rounded-md", rows: "3"
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :instructions
-    = f.text_area :instructions
+        = f.fields_for :questions do |questions_form|
+          %div{ :class => "shadow overflow-hidden sm:rounded-md py-1" }
+            %div{ :class => "px-4 py-5 bg-white space-y-6 sm:p-6" }
+              %fieldset
+                %div
+                  %legend{ :class => "text-base font-medium text-gray-900" }
+                    Question #{(questions_form.index + 1)}
 
-  Questions:
-  .field
-    = f.fields_for :questions do |questions_form|
-      .field
-        = questions_form.label :query_question
-        = questions_form.text_field :query_question
+                  .py-2
+                    .border-t.border-gray-200
+                  
+                  .mt-1.relative.rounded-md.shadow-sm
+                    = questions_form.text_area :query_question, :class => "focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-3 sm:text-sm border-gray-300 rounded-md", rows: "2"
+                
+                %div{ :class => "mt-4 space-y-4" }
+                  = questions_form.label :correct_answer, :class => "block text-sm font-medium text-gray-700"
+                  %div{ :class => "flex items-center" }
+                    = questions_form.radio_button :correct_answer, "true", class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    = questions_form.label :correct_answer_true, "True", class: "ml-3 block text-sm font-medium text-gray-700"
 
-        = questions_form.label :correct_answer
+                  %div{ :class => "flex items-center" }
+                    = questions_form.radio_button :correct_answer, "false", class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    = questions_form.label :correct_answer_false, "False", class: "ml-3 block text-sm font-medium text-gray-700"
 
-        = questions_form.radio_button :correct_answer, "true"
-        = questions_form.label :correct_answer_true, "True"
+                %div{ :class => "py-3"}
+                  = questions_form.label :grading, :class => "block text-sm font-medium text-gray-700"
+                  .mt-1.relative.rounded-md.shadow-sm
+                    = questions_form.text_field :grading, :class => "focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md", :value => 1
 
-        = questions_form.radio_button :correct_answer, "false"
-        = questions_form.label :correct_answer_false, "False"
-
-        = questions_form.label :grading
-        = questions_form.text_field :grading, value: 1
-      %hr/
-
-  .actions
-    = f.submit 'Save'
-
+        %div{ :class => "px-4 py-3 bg-gray-50 text-right sm:px-6" }
+          = f.submit 'Submit', class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          -# <button type="submit" :class =>  }Save
 
