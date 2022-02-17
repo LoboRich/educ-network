@@ -10,5 +10,6 @@
       = f.hidden_field :user_id, value: current_user.id
       = f.hidden_field :post_id, value: info.id
       = f.text_area :content, :class => "appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none", :placeholder => "Write a comment"
-      = f.submit 'Comment', :class => "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+      = f.submit 'Comment', :class => "flex-shrink-0 bg-my-blue hover:bg-my-blue hover:opacity-75 transition-opacity duration-200 text-sm text-white py-1 px-2 rounded"
+
       

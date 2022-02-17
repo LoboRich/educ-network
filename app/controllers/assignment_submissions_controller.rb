@@ -33,7 +33,7 @@ class AssignmentSubmissionsController < ApplicationController
     
     respond_to do |format|
       if @assignment_submission.save
-        format.html { redirect_to group_assignments_path(@group, @assignment), notice: "Assignment submission was successfully created." }
+        format.html { redirect_to group_path(@group), notice: "Assignment submission was successfully created." }
         format.json { render :show, status: :created, location: @assignment_submission }
       else
         format.html { render :new, status: :unprocessable_entity }
